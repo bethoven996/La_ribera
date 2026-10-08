@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      name="description"
+      content="La Ribera, almacén saludable. Frutos secos, semillas, harinas y yuyos. Armá tu pedido y lo coordinamos por WhatsApp."
+    />
+    <link rel="icon" href="img/logo-mascara.png" />
+    <title>La Ribera Almacén Saludable</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Satisfy&display=swap"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <div class="envoltura">
+        <div class="logo" role="img" aria-label="La Ribera"></div>
+        <nav class="menu menu-cab" aria-label="Secciones">
+          <a href="#productos">Productos</a><a href="#nosotros">Quiénes somos</a
+          ><a href="#contacto">Contacto</a>
+        </nav>
+        <div class="buscador">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-3.5-3.5" />
+          </svg>
+          <input
+            id="buscar"
+            type="search"
+            placeholder="Buscar almendras, avena, yerba…"
+            aria-label="Buscar productos"
+            autocomplete="off"
+          />
+        </div>
+        <button
+          class="btn-carrito"
+          id="abrir-carrito"
+          type="button"
+          aria-label="Ver mi pedido"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z" />
+            <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+          </svg>
+          Mi pedido <span class="cuenta num" id="cuenta">0</span>
+        </button>
+      </div>
+      <svg
+        class="onda"
+        viewBox="0 0 1200 18"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M0 0h1200v6c-50 0-75 10-150 10S975 6 900 6s-75 10-150 10S675 6 600 6s-75 10-150 10S375 6 300 6s-75 10-150 10S75 6 0 6z"
+          fill="currentColor"
+        />
+      </svg>
+    </header>
+
+    <main>
+      <nav class="menu menu-movil" aria-label="Secciones">
+        <a href="#productos">Productos</a><a href="#nosotros">Quiénes somos</a
+        ><a href="#contacto">Contacto</a>
+      </nav>
+      <section class="banner" aria-labelledby="banner-titulo">
+        <svg
+          class="ilustracion"
+          id="ilustracion"
+          viewBox="0 0 1200 340"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        ></svg>
+        <div class="banner-texto">
+          <h1 id="banner-titulo">Almacén saludable</h1>
+          <p class="banner-sub" id="banner-sub" hidden></p>
+          <p id="banner-bajada">
+            Frutos secos, semillas, harinas y yuyos. Armá tu pedido y lo
+            coordinamos por WhatsApp.
+          </p>
+        </div>
+      </section>
+      <div class="envoltura">
+        <ol class="pasos">
+          <li>
+            <b>1</b
+            ><span><strong>Elegí</strong> el producto y la presentación.</span>
+          </li>
+          <li>
+            <b>2</b
+            ><span
+              ><strong>Armá tu pedido</strong>: retiro en el local o
+              envío.</span
+            >
+          </li>
+          <li>
+            <b>3</b
+            ><span
+              ><strong>Mandalo por WhatsApp</strong> y te confirmamos el
+              total.</span
+            >
+          </li>
+        </ol>
+      </div>
+
+      <section class="nosotros" id="nosotros" aria-labelledby="titulo-nosotros">
+        <div class="envoltura nosotros-grilla">
+          <figure class="nosotros-foto">
+            <img
+              src="img/guille-y-juli.jpg"
+              alt="Guille y Juli en la puerta de La Ribera"
+              width="700"
+              height="850"
+              loading="lazy"
+            />
+          </figure>
+          <div class="nosotros-texto">
+            <p class="nosotros-eyebrow">Quiénes somos</p>
+            <h2 id="titulo-nosotros">Hola, somos Guille y Juli</h2>
+            <p class="destacado">
+              Con mucho amor y esfuerzo pudimos abrir nuestro propio local. Un
+              sueño, ¿verdad?
+            </p>
+            <p>
+              Detrás de cada estante hay muchas horas de trabajo, muchas
+              charlas, cuentas y planes, y unas ganas enormes de tener un lugar
+              propio, hecho a nuestra manera. Un día nos animamos, y hoy La
+              Ribera tiene la puerta abierta a la calle.
+            </p>
+            <p>
+              Lo pensamos como un almacén de barrio de los de antes: un lugar
+              donde te saludan, te recomiendan y te llevás la cantidad justa.
+              Por eso muchos productos los fraccionamos nosotros, para que no
+              tengas que comprar de más.
+            </p>
+            <p>
+              Creemos que comer rico y sano no tiene por qué ser complicado.
+              Elegimos cada producto pensando en lo que llevaríamos a nuestra
+              propia mesa.
+            </p>
+            <p>
+              Gracias por elegirnos, por pasar a saludar y por cada pedido que
+              nos llega. Cada uno hace un poquito más grande este sueño.
+            </p>
+            <p>
+              Te esperamos en el local, en <strong>3 de Febrero 780</strong>. Y
+              si no podés venir, armá tu pedido acá y lo coordinamos por
+              WhatsApp.
+            </p>
+            <p class="firma">Guille y Juli</p>
+            <div class="nosotros-acciones">
+              <a
+                class="btn-chico primario"
+                href="https://wa.me/5493417206755"
+                target="_blank"
+                rel="noopener"
+                ><svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"
+                  />
+                </svg>
+                Escribinos</a
+              >
+              <a
+                class="btn-chico"
+                href="https://www.instagram.com/laribera.almacen/"
+                target="_blank"
+                rel="noopener"
+                ><svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" />
+                </svg>
+                @laribera.almacen</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="envoltura" id="productos" aria-labelledby="titulo-lista">
+        <div class="estantes-marco" id="estantes-marco">
+          <button
+            class="flecha izq"
+            type="button"
+            id="flecha-izq"
+            aria-label="Ver categorías anteriores"
+            hidden
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+          <nav class="estantes" id="estantes" aria-label="Categorías"></nav>
+          <button
+            class="flecha der"
+            type="button"
+            id="flecha-der"
+            aria-label="Ver más categorías"
+            hidden
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+        <div class="barra-resultados">
+          <h2 id="titulo-lista">Todos los productos</h2>
+          <p id="conteo" class="num"></p>
+        </div>
+        <div class="grilla" id="grilla"></div>
+      </section>
+    </main>
+
+    <footer class="pie" id="contacto">
+      <div class="envoltura pie-grilla">
+        <div class="pie-marca">
+          <div class="logo" role="img" aria-label="La Ribera"></div>
+          <p>Almacén saludable</p>
+          <div class="pie-legal">
+            <small
+              >Los precios pueden cambiar. Te confirmamos el total al responder
+              tu pedido.</small
+            >
+            <button class="link-dueno" id="abrir-login" type="button">
+              Ingresar como dueño
+            </button>
+          </div>
+        </div>
+        <div class="pie-contacto">
+          <h2>Contacto</h2>
+          <a href="https://wa.me/5493417206755" target="_blank" rel="noopener"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"
+              />
+            </svg>
+            <span>WhatsApp <strong class="num">341 720-6755</strong></span></a
+          >
+          <a
+            href="https://www.instagram.com/laribera.almacen/"
+            target="_blank"
+            rel="noopener"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" />
+            </svg>
+            <span>Instagram <strong>@laribera.almacen</strong></span></a
+          >
+        </div>
+        <div class="pie-visita">
+          <h2>Visitanos</h2>
+          <a
+            class="pie-dir"
+            href="https://www.google.com/maps/search/?api=1&query=3+de+Febrero+780%2C+Rosario%2C+Santa+Fe"
+            target="_blank"
+            rel="noopener"
+            ><svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"
+              />
+              <circle cx="12" cy="9.5" r="2.5" />
+            </svg>
+            <span
+              >Dirección <strong>3 de Febrero 780</strong>Rosario, Santa
+              Fe</span
+            ></a
+          >
+          <div class="mapa">
+            <iframe
+              title="Mapa: La Ribera, 3 de Febrero 780, Rosario"
+              src="https://www.google.com/maps?q=3+de+Febrero+780%2C+Rosario%2C+Santa+Fe&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <a
+            class="btn-llegar"
+            href="https://www.google.com/maps/dir/?api=1&destination=3+de+Febrero+780%2C+Rosario%2C+Santa+Fe"
+            target="_blank"
+            rel="noopener"
+            >Cómo llegar</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <div class="velo" id="velo" hidden></div>
+    <aside
+      class="panel"
+      id="panel"
+      hidden
+      aria-labelledby="titulo-panel"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div class="panel-cab">
+        <h2 id="titulo-panel">Mi pedido</h2>
+        <div class="cab-acciones">
+          <div id="zona-vaciar"></div>
+          <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">
+            ×
+          </button>
+        </div>
+      </div>
+      <div class="panel-cuerpo" id="panel-cuerpo"></div>
+      <div class="panel-pie" id="panel-pie"></div>
+    </aside>
+
+    <div
+      class="modal"
+      id="modal-login"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="titulo-login"
+    >
+      <form class="modal-caja" id="form-login">
+        <button class="cerrar" type="button" data-cerrar aria-label="Cerrar">
+          ×
+        </button>
+        <div class="logo" role="img" aria-label="La Ribera"></div>
+        <h2 id="titulo-login" style="font-size: 22px">Panel del dueño</h2>
+        <p>
+          Pedidos, productos y estadísticas de ventas. Solo puede entrar la
+          cuenta del dueño.
+        </p>
+        <div class="campo">
+          <label for="login-email">Email</label
+          ><input id="login-email" type="email" autocomplete="username" />
+        </div>
+        <div class="campo">
+          <label for="login-clave">Contraseña</label
+          ><input
+            id="login-clave"
+            type="password"
+            autocomplete="current-password"
+          />
+        </div>
+        <button class="btn-grande" type="submit">Ingresar</button>
+        <p class="nota-preview" id="login-nota" hidden>
+          Esta es una vista previa del diseño. El ingreso real se conecta a
+          Supabase cuando armemos el panel.
+        </p>
+      </form>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+# Datos reales del negocio: costos, proveedores y precios NO van al repo público
+data/
+*.xlsx
+.env
+.env.*
+__pycache__/
+node_modules/
+secrets/
+!.env.example
+.qodo/
+WhatsApp Image*
