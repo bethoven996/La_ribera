@@ -1,0 +1,61 @@
+# Lee la planilla del Drive una vez por hora y, si cambió algo, actualiza web/data/catalogo.json.
+# Ese commit dispara la publicación en Netlify. Si no cambió nada, no hace nada.
+name: Actualizar precios desde el Drive
+
+on:
+  schedule:
+    - cron: "7 * * * *" # cada hora, en el minuto 7 (hora UTC)
+  workflow_dispatch: # botón "Run workflow" para actualizar ya
+
+permissions:
+  contents: write # para poder commitear el catálogo
+
+concurrency:
+  group: actualizar-precios
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Preparar la clave de Google (solo lectura)
+        env:
+          GOOGLE_SA: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          mkdir -p secrets
+          printf '%s' "$GOOGLE_SA" > secrets/la-ribera-sync.json
+
+      - name: Leer el Drive y armar el catálogo
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_FILE: secrets/la-ribera-sync.json
+        run: |
+          python scripts/sync_drive.py
+          python scripts/armar_catalogo.py
+
+      - name: Publicar solo si cambió algo
+        run: |
+          if git diff --quiet -- web/data; then
+            echo "Sin cambios en la planilla. No se publica nada."
+            exit 0
+          fi
+          git config user.name "la-ribera-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add web/data
+          git commit -m "Precios actualizados desde el Drive"
+          git push
+
+      - name: Borrar la clave
+        if: always()
+        run: rm -f secrets/la-ribera-sync.json
