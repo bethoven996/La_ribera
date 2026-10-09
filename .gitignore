@@ -1,5 +1,5 @@
 # Datos reales del negocio: costos, proveedores y precios NO van al repo público
-data/
+/data/
 *.xlsx
 .env
 .env.*
