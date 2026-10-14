@@ -247,6 +247,10 @@ def procesar(hojas: dict[str, list[tuple]]):
     leer_precio_kg(tablas["kg"], productos, revisar)
     leer_proveedores(tablas["proveedores"], productos)
 
+    # Reglas de la web: ocultar (columna Web = NO), venta por kilo y tamaños agrupados
+    from reglas_web import aplicar
+    aplicar(tablas, productos, revisar)
+
     # Slugs únicos + desactivar productos sin ningún precio válido
     vistos = {}
     for p in productos.values():
@@ -254,7 +258,8 @@ def procesar(hojas: dict[str, list[tuple]]):
         vistos[p.slug] = n + 1
         if n:
             p.slug = f"{p.slug}-{n + 1}"
-        p.presentaciones.sort(key=lambda x: (x.gramos is None, x.gramos or 0))
+        if not getattr(p, "orden_fijo", False):
+            p.presentaciones.sort(key=lambda x: (x.gramos is None, x.gramos or 0))
         if not any(x.precio for x in p.presentaciones):
             p.activo = False
     for k, p in productos.items():

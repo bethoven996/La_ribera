@@ -151,10 +151,7 @@ tofu-clasico-firme-320gr-soyland,Tofu Clásico firme 320gr - SoyLand,Bebidas y r
 tofu-finas-hierbas-320gr-soyland,Tofu Finas hierbas 320gr - SoyLand,Bebidas y refrigerados,si
 tofu-pesto320gr-soyland,Tofu Pesto320gr - SoyLand,Bebidas y refrigerados,si
 untable-crema-de-caju-vivet-finas-hierbas,Untable crema de caju vivet - finas hierbas,Bebidas y refrigerados,si
-yogur-hera-x-150-gr,Yogur hera x 150 gr,Bebidas y refrigerados,si
-yogurt-hera-x-300gr,Yogurt Hera x 300gr,Bebidas y refrigerados,si
-yogurt-hera-x-450gr,Yogurt Hera x 450gr,Bebidas y refrigerados,si
-yogurt-hera-x-750gr,Yogurt Hera x 750gr,Bebidas y refrigerados,si
+yogur-hera,Yogur Hera,Bebidas y refrigerados,
 yogurt-power-pro-chocolate-quimya,Yogurt Power Pro chocolate - Quimya,Bebidas y refrigerados,si
 yogurt-arandanos-coco-logo,Yogurt arándanos - Coco Logo,Bebidas y refrigerados,si
 yogurt-arandanos-quimya,Yogurt arándanos - Quimya,Bebidas y refrigerados,si
@@ -224,9 +221,7 @@ azucar-rubia,Azúcar Rubia,Endulzantes,si
 edulcorante-sucralosa-x200ml-kony,Edulcorante sucralosa x200ml Kony,Endulzantes,si
 edulcorante-sucralosa-x500ml-kony,Edulcorante sucralosa x500ml Kony,Endulzantes,si
 esencia-de-vainilla,Esencia de vainilla,Endulzantes,si
-estevia-kony-liquida-100ml,Estevia kony liquida 100ml,Endulzantes,si
-estevia-kony-liquida-200ml,Estevia kony liquida 200ml,Endulzantes,si
-estevia-kony-liquida-500ml,Estevia kony liquida 500ml,Endulzantes,si
+stevia-kony-liquida,Stevia Kony líquida,Endulzantes,
 stevia-en-hoja,Stevia en hoja,Endulzantes,si
 stevia-kony-x-1kg-en-polvo,Stevia kony x 1kg en polvo,Endulzantes,si
 ajo-granulado,Ajo granulado,Especias y condimentos,si
@@ -237,7 +232,6 @@ cacao-el-quilla-x-900gr,Cacao el quilla x 900gr,Especias y condimentos,si
 canela-molida-extra-500gr-dussen,Canela molida extra 500gr - Dussen,Especias y condimentos,si
 canela-polvo,Canela polvo,Especias y condimentos,si
 cedron-en-hojas-peoncito,Cedrón en hojas- Peoncito,Especias y condimentos,si
-chimichurry,Chimichurry,Especias y condimentos,si
 chimichurry-deshidratado,Chimichurry deshidratado,Especias y condimentos,
 coco-rallado-high-fat,Coco rallado high fat,Especias y condimentos,si
 comino,Comino,Especias y condimentos,si
@@ -269,7 +263,6 @@ paprika,Paprika,Especias y condimentos,si
 peperina-hojas,Peperina hojas,Especias y condimentos,si
 pimenton,Pimentón,Especias y condimentos,si
 pimienta-negra-grano-premium,Pimienta negra grano premium,Especias y condimentos,si
-pimienta-negra-grano-premium-x-500gr,Pimienta negra grano premium x 500gr,Especias y condimentos,si
 poleo-hojas,Poleo hojas,Especias y condimentos,si
 provenzal,Provenzal,Especias y condimentos,si
 provenzal-cumana,Provenzal Cumaná,Especias y condimentos,si
@@ -301,7 +294,6 @@ almendra-sin-cascara-guara-6,Almendra sin cascara guara 6,Frutos secos,si
 castanas-de-caju-xkg-w4,Castañas de caju xkg W4,Frutos secos,si
 castanas-de-para,Castañas de para,Frutos secos,si
 chip-banana,Chip banana,Frutos secos,si
-chips-de-banana,Chips de banana,Frutos secos,si
 maiz-frito-barbacoa,Maiz frito barbacoa,Frutos secos,si
 maiz-frito-mostaza-y-miel,Maiz frito mostaza y miel,Frutos secos,si
 maiz-frito-tostado-y-salado,Maiz frito tostado y salado,Frutos secos,si
@@ -309,11 +301,9 @@ mani-cascara,Maní cáscara,Frutos secos,si
 mani-japones,Maní japonés,Frutos secos,si
 mani-repelado-con-sal,Maní repelado con sal,Frutos secos,si
 mani-repelado-sin-sal,Maní repelado sin sal,Frutos secos,si
-mix-cervecero,Mix Cervecero,Frutos secos,si
 mix-cervecero-salado,Mix Cervecero - salado,Frutos secos,si
 mix-europeo,Mix Europeo,Frutos secos,si
 mix-frutos-secos-s-pasas-con-banana,Mix frutos secos s/ pasas con banana,Frutos secos,si
-mix-frutos-secos-s-pasas,Mix frutos secos s/pasas,Frutos secos,si
 mix-frutos-secos-s-pasas-con-mani,Mix frutos secos s/pasas con mani,Frutos secos,si
 mix-frutos-secos-s-pasas-s-mani,Mix frutos secos s/pasas s/maní,Frutos secos,si
 mix-patagonico,Mix patagónico,Frutos secos,si
@@ -321,11 +311,8 @@ mix-tropical,Mix tropical,Frutos secos,si
 nueces-extra-light,Nueces extra light,Frutos secos,si
 nueces-pecan,Nueces pecan,Frutos secos,si
 pasas-de-uva-sultarina-negra,Pasas de uva sultarina negra,Frutos secos,si
-pasas-de-uva-sultarinas-negras,Pasas de uva sultarinas negras,Frutos secos,si
 pistacho-tostado-salado,Pistacho tostado salado,Frutos secos,si
-pistacho-tostado-salado-x500,Pistacho tostado salado x500,Frutos secos,si
 soja-texturizada,Soja texturizada,Frutos secos,si
-alfajores-integrales-sin-azucar-choco,Alfajores integrales sin azucar choco,Granolas y barritas,si
 barrita-brava-brava-choco,Barrita Brava brava - choco,Granolas y barritas,si
 barrita-brava-brava-mundial,Barrita Brava brava Mundial,Granolas y barritas,si
 barrita-cacao-y-avellanas-x16u-muecas,Barrita Cacao y avellanas x16u - Muecas,Granolas y barritas,si
@@ -382,15 +369,7 @@ granola-sintacc-integra,Granola sintacc integra,Granolas y barritas,si
 granola-tradicional-mandala-raiz,Granola tradicional mandala raiz,Granolas y barritas,
 granola-tradicional-xkg-mandala-raiz,Granola tradicional xkg - mandala raiz,Granolas y barritas,si
 granola-vegan-max-1kg-granomax,Granola vegan max 1kg - Granomax,Granolas y barritas,si
-pepas-algarroba-batata,Pepas algarroba batata,Granolas y barritas,si
-pepas-algarroba-frutos-rojos,Pepas algarroba frutos rojos,Granolas y barritas,si
-pepas-algarroba-membrillo,Pepas algarroba membrillo,Granolas y barritas,si
-pepas-pepe-manjar-bata,Pepas pepe manjar bata,Granolas y barritas,si
-pepas-pepe-manjar-frutos-del-bosque-2,Pepas pepe manjar frutos del bosque,Granolas y barritas,si
-pepas-pepe-manjar-membrillo-2,Pepas pepe manjar membrillo,Granolas y barritas,si
 almidon-grutal,Almidón grutal,Harinas y derivados,si
-bicarbonato-sodio,Bicarbonato sodio,Harinas y derivados,si
-cacao-amargo-alcalino-ankas,Cacao amargo alcalino ankas,Harinas y derivados,si
 fecula-mandioca-delicel-450gr,Fecula mandioca delicel 450gr,Harinas y derivados,si
 fecula-de-mandioca,Fécula de mandioca,Harinas y derivados,si
 harina-algarroba,Harina algarroba,Harinas y derivados,si
@@ -436,7 +415,6 @@ cous-cous,Cous- Cous,Semillas,si
 girasol-s-cascara,Girasol s/ cáscara,Semillas,si
 lino,Lino,Semillas,si
 mix-semilla,Mix semilla,Semillas,si
-quinoa-pop-sin-azucar,Quinoa pop sin azucar,Semillas,si
 quinoa-pop-sin-azucar-ying-yang,Quinoa pop sin azucar ying yang,Semillas,si
 quinoa-roja-el-peoncito,Quinoa roja- El peoncito,Semillas,si
 semilla-sesamo-integral,Semilla sésamo integral,Semillas,si
@@ -475,5 +453,3 @@ yerba-ajedrez-sin-palo-10kg,Yerba ajedrez sin palo 10kg,Yerba,si
 yerba-mate-teihang-x-500gr,Yerba mate Teihang x 500gr,Yerba,si
 yerba-mate-agroecologica-x500-gr-mathienzo,Yerba mate agroecológica x500 gr - Mathienzo,Yerba,si
 yerba-mate-tucangua-x-500gr,Yerba mate tucangua x 500gr,Yerba,si
-mezcla-hierbas-acidez,Mezcla Hierbas acidez,Yuyos y té,si
-mezcla-hierbas-mate,Mezcla hierbas mate,Yuyos y té,si

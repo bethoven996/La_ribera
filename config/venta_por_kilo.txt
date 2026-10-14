@@ -1,0 +1,39 @@
+# Productos que SÍ se venden por kilo (lista de Guille y Juli).
+# Al resto se le saca la opción "1 kg" que viene de la hoja PRECIO X KG.
+# Un producto por línea, con el nombre como figura en el Excel (no hace falta exacto).
+# Si en la hoja PRECIO X KG agregan una columna "Web" con SI/NO, esa columna manda y este archivo se ignora.
+Garbanzos
+Poroto negro
+Poroto Alubia
+Arroz largo fino integral
+Arroz integral Yamaní
+Avena tradicional
+Arroz largo fino
+Arroz carnaroli
+Avena Instantánea x1kg
+Soja texturizada 1kg
+harina de avena x1kg
+Harina integral x1kg
+Fécula de mandioca x 1kg
+Harina de Garbanzos
+Harina de almendras - El peoncito
+Harina de almendras económica
+Harina garbanzo
+Harina de arveja
+Harina de lenteja
+Harina de arroz integral
+Harina de arroz blanca
+Harina de trigo Sarraceno
+Almidón grutal x1kg
+Granola con chocolate mandala raiz xkg
+Granola tradicional mandala raiz xkg
+Granola manzana dulce mandala raiz xkg
+Granola arándanos s/azúcar mandala raiz xkg
+Granola s/pasas mandala raiz xkg
+Granola Granomax Natural x1KG
+Granola Granomax Power x1KG
+Granola Granomax Chocoway x1KG
+Granola Granomax Pasas de uva x1KG
+Granola Granomax Chocolate x1KG
+Yerba ajedrez con palo kg
+Yerba ajedrez sin palo kg
