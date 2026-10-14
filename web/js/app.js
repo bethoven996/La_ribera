@@ -31,7 +31,7 @@ const TONO = {
   "Bebidas y refrigerados": 190,
   Congelados: 200,
   "Especias y condimentos": 8,
-  "Yuyos y té": 110,
+  "hierbas y té": 110,
   Yerba: 95,
 };
 
@@ -684,7 +684,7 @@ function pintarBanner() {
     ? n === 1
       ? "1 producto"
       : `${n} productos`
-    : "Frutos secos, semillas, harinas y yuyos. Armá tu pedido y lo coordinamos por WhatsApp.";
+    : "Frutos secos, semillas, harinas y hierbas. Armá tu pedido y lo coordinamos por WhatsApp.";
 }
 
 /* ---------- Flechas de categorías ---------- */
