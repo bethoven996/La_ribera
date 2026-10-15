@@ -2,8 +2,10 @@
 Arma web/data/catalogo.json: lo que ve el cliente (nombre, categoría, presentaciones y precios).
 NUNCA incluye costos, márgenes ni proveedores.
 
-También detecta las fotos: si existe web/img/productos/<slug>.jpg (o .jpeg/.png/.webp),
-el producto la muestra. Para saber el slug de cada producto, mirá web/data/slugs.csv.
+También detecta las fotos:
+  1) la que subieron los dueños desde el panel (Supabase, productos.foto_url) — tiene prioridad;
+  2) si no, web/img/productos/<slug>.jpg (o .jpeg/.png/.webp).
+Para saber el slug de cada producto, mirá web/data/slugs.csv.
 
 Uso:
     python scripts/armar_catalogo.py
@@ -13,6 +15,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -29,8 +32,28 @@ def foto_de(slug: str) -> str | None:
     return None
 
 
+def fotos_del_panel() -> dict[str, str]:
+    """clave -> URL de la foto subida desde el panel. Sin DATABASE_URL (o sin conexión) devuelve {}."""
+    try:
+        from dotenv import load_dotenv
+        load_dotenv(RAIZ / ".env")
+    except ImportError:
+        pass
+    dsn = os.environ.get("DATABASE_URL")
+    if not dsn:
+        return {}
+    try:
+        import psycopg
+        with psycopg.connect(dsn, connect_timeout=15) as conn:
+            return dict(conn.execute("select clave, foto_url from public.productos where foto_url is not null").fetchall())
+    except Exception as e:                       # la web se arma igual, con las fotos del repo
+        print(f"Aviso: no pude leer las fotos del panel ({e.__class__.__name__}). Uso solo las del repo.")
+        return {}
+
+
 def main():
     productos = json.loads(SEED.read_text("utf-8"))
+    del_panel = fotos_del_panel()
     FOTOS.mkdir(parents=True, exist_ok=True)
     catalogo, con_foto = [], 0
     for p in productos:
@@ -41,7 +64,7 @@ def main():
         if not pres:
             continue
         item = {"s": p["slug"], "n": p["nombre"], "c": p["categoria"], "v": pres}
-        if f := foto_de(p["slug"]):
+        if f := del_panel.get(p.get("clave", "")) or foto_de(p["slug"]):
             item["f"] = f
             con_foto += 1
         catalogo.append(item)
@@ -57,7 +80,7 @@ def main():
 
     huerfanas = [f.name for f in FOTOS.iterdir()
                  if f.suffix.lower() in EXTENSIONES and f.stem not in {c["s"] for c in catalogo}]
-    print(f"Catálogo: {len(catalogo)} productos, {con_foto} con foto.")
+    print(f"Catálogo: {len(catalogo)} productos, {con_foto} con foto ({len(del_panel)} subidas desde el panel).")
     if huerfanas:
         print(f"Ojo: {len(huerfanas)} fotos no coinciden con ningún slug (revisá el nombre): {huerfanas[:5]}")
 

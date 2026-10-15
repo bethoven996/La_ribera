@@ -43,7 +43,7 @@ $("#form-login").addEventListener("submit", async e => {
 $("#salir").addEventListener("click", async () => { await sb.auth.signOut(); location.reload(); });
 
 /* ---------- Pestañas ---------- */
-const TABS = ["vender", "ventas", "pedidos", "stock", "resumen"];
+const TABS = ["vender", "ventas", "pedidos", "stock", "productos", "resumen"];
 document.querySelector(".pestanias").addEventListener("click", e => {
   const b = e.target.closest("[data-tab]"); if (b) irA(b.dataset.tab);
 });
@@ -54,6 +54,7 @@ function irA(tab) {
   if (tab === "resumen") cargarResumen();
   if (tab === "pedidos") cargarPedidos();
   if (tab === "stock") cargarStock();
+  if (tab === "productos") pintarFotos();
   scrollTo(0, 0);
 }
 
@@ -169,6 +170,15 @@ function dibujar(id, config) {
   graficos[id] = new Chart($("#" + id), config);
 }
 
+// sin ventas en el período: en vez de un gráfico vacío, un mensaje
+function sinDatos(id, hay) {
+  const lienzo = $("#" + id).parentElement;
+  let msg = lienzo.querySelector(".vacio");
+  if (!msg) { msg = document.createElement("p"); msg.className = "vacio sin-datos"; msg.textContent = "Todavía no hay ventas en este período."; lienzo.append(msg); }
+  msg.hidden = hay; $("#" + id).hidden = !hay;
+  if (!hay) { graficos[id]?.destroy(); delete graficos[id]; }
+  return hay;
+}
 function pintarTiempo() {
   const { por_dia, desde, hasta, dias } = ultimo;
   const modo = agrupar || (dias > 180 ? "mes" : dias > 62 ? "semana" : "dia");
@@ -184,7 +194,7 @@ function pintarTiempo() {
     g.ventas += v ? +v.ventas : 0; g.n += v ? v.n : 0; grupos.set(k, g);
   }
   const filas = [...grupos.values()], color = css("--barra");
-  if (!filas.some(f => f.ventas)) { graficos["c-tiempo"]?.destroy(); delete graficos["c-tiempo"]; }
+  if (!sinDatos("c-tiempo", filas.some(f => f.ventas))) return;
   const op = opcionesBase(ctx => ` ${plata(ctx.raw)} · ${filas[ctx.dataIndex].n} ${filas[ctx.dataIndex].n === 1 ? "venta" : "ventas"}`);
   dibujar("c-tiempo", { type: "line", data: { labels: filas.map(f => f.et), datasets: [{ data: filas.map(f => f.ventas), borderColor: color, borderWidth: 2,
     backgroundColor: color + "33", fill: true, tension: .3, pointRadius: filas.length > 40 ? 0 : 3, pointHoverRadius: 5, pointBackgroundColor: color }] }, options: op });
@@ -197,6 +207,7 @@ function pintarSemana() {
     const i = (d.getDay() + 6) % 7; tot[i] += mapa.get(isoLocal(d)) || 0; veces[i]++;
   }
   const prom = tot.map((t, i) => veces[i] ? Math.round(t / veces[i]) : 0), max = Math.max(...prom);
+  if (!sinDatos("c-semana", max > 0)) return;
   const color = css("--barra"), suave = color + "66";
   dibujar("c-semana", { type: "bar", data: { labels: DIAS, datasets: [{ data: prom, backgroundColor: prom.map(v => v === max && max ? color : suave),
     borderRadius: 4, maxBarThickness: 36 }] }, options: { ...opcionesBase(ctx => ` ${plata(ctx.raw)} por día en promedio`), interaction: { mode: "nearest", intersect: true } } });
@@ -274,7 +285,7 @@ async function cargarPedidos() {
   const { data, error } = await q;
   const lista = $("#lista-pedidos");
   if (error) { lista.innerHTML = `<p class="vacio">No se pudieron cargar los pedidos (${esc(error.message)}).</p>`; return; }
-  lista.innerHTML = data.length ? data.map(tarjetaPedido).join("") : `<p class="vacio">No hay pedidos ${estadoFiltro ? ESTADOS[estadoFiltro].toLowerCase() + "s" : ""}.</p>`;
+  lista.innerHTML = data.length ? data.map(tarjetaPedido).join("") : `<p class="vacio">${estadoFiltro ? "No hay pedidos " + ESTADOS[estadoFiltro].toLowerCase() + "s." : "Todavía no entró ningún pedido por la web."}</p>`;
   const { count } = await sb.from("pedidos").select("id", { count: "exact", head: true }).eq("estado", "pendiente").eq("origen", "web");
   $("#n-pendientes").hidden = !count; $("#n-pendientes").textContent = count || "";
 }
@@ -319,7 +330,7 @@ let enEdicion = null;       // { prod, modo: presentacion id | "peso", gramos, c
 
 async function cargarCatalogo() {
   const { data, error } = await sb.from("productos")
-    .select("id, nombre, activo, precio_kg, categorias(nombre), presentaciones(id, etiqueta, gramos, precio, activo)")
+    .select("id, slug, nombre, activo, precio_kg, foto_url, categorias(nombre), presentaciones(id, etiqueta, gramos, precio, activo)")
     .order("nombre");
   if (error) { $("#v-resultados").innerHTML = `<li class="vacio">No se pudo cargar la lista de productos (${esc(error.message)}).</li>`; return; }
   CATALOGO = data.map(p => ({
@@ -450,7 +461,7 @@ const textoStock = s => +s.stock <= 0 ? "sin stock" : "quedan " + cantStock(s.st
 async function cargarStock() {
   const { data, error } = await sb.rpc("panel_stock");
   if (error) { $("#s-lista").innerHTML = `<p class="vacio">No se pudo cargar el stock (${esc(error.message)}).</p>`; return; }
-  STOCK = new Map(data.map(s => [s.producto_id, s]));
+  STOCK = new Map((data || []).map(s => [s.producto_id, s]));
   const alertas = data.filter(s => claseStock(s) !== "ok").length;
   $("#n-stock").hidden = !alertas; $("#n-stock").textContent = alertas || "";
   pintarStock();
@@ -472,6 +483,81 @@ $("#s-buscar").addEventListener("input", pintarStock);
 $("#s-filtro").addEventListener("click", e => {
   const b = e.target.closest("[data-f]"); if (!b) return;
   filtroStock = b.dataset.f; b.parentElement.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); pintarStock();
+});
+
+/* ---------- Fotos de productos ---------- */
+let FOTOS_REPO = new Map(), filtroFotos = "sin", fotoPara = null;
+fetch("../data/catalogo.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : []).then(c => {
+  FOTOS_REPO = new Map(c.filter(p => p.f && !/^https?:/.test(p.f)).map(p => [p.s, "../img/productos/" + p.f]));
+  if (!$("#tab-productos").hidden) pintarFotos();
+}).catch(() => {});
+// archivos de la carpeta del Drive cuyo nombre no coincide con ningún producto
+fetch("../data/fotos_drive.json", { cache: "no-cache" }).then(r => r.ok ? r.json() : null).then(d => {
+  if (!d?.sin_asociar?.length) return;
+  const box = $("#p-drive"); box.hidden = false;
+  box.innerHTML = `<b>${d.sin_asociar.length} ${d.sin_asociar.length === 1 ? "foto del Drive no coincide" : "fotos del Drive no coinciden"} con ningún producto.</b> Cambiales el nombre para que sea igual al del Excel:
+    <ul>${d.sin_asociar.slice(0, 30).map(n => `<li>${esc(n)}</li>`).join("")}</ul>`;
+}).catch(() => {});
+const fotoActual = p => p.foto_url || FOTOS_REPO.get(p.slug) || null;
+function pintarFotos() {
+  const q = normalizar($("#p-buscar").value.trim());
+  const activos = CATALOGO.filter(p => p.activo);
+  $("#p-n-sin").textContent = activos.filter(p => !fotoActual(p)).length;
+  const lista = activos.filter(p => (!q || p.k.includes(q)) &&
+    (filtroFotos === "todos" || (filtroFotos === "sin" ? !fotoActual(p) : !!fotoActual(p)))).slice(0, 60);
+  $("#p-lista").innerHTML = lista.length ? lista.map(p => {
+    const f = fotoActual(p);
+    return `<article class="foto-item">
+      <div class="foto-marco">${f ? `<img src="${esc(f)}" alt="" loading="lazy">` : `<span>Sin foto</span>`}</div>
+      <div class="foto-datos"><strong>${esc(p.nombre)}</strong><small>${esc(p.cat)}${p.foto_url ? " · subida desde el panel" : ""}</small>
+        <div class="acciones"><button type="button" class="${f ? "" : "prim"}" data-foto="${p.id}">${f ? "Cambiar foto" : "Subir foto"}</button>
+        ${p.foto_url ? `<button type="button" class="peligro" data-quitar-foto="${p.id}">Quitar</button>` : ""}</div></div>
+    </article>`;
+  }).join("") : `<p class="vacio">${q ? "No encontré productos con ese nombre." : filtroFotos === "sin" ? "¡Todos los productos tienen foto!" : "No hay productos para mostrar."}</p>`;
+}
+$("#p-buscar").addEventListener("input", pintarFotos);
+$("#p-filtro").addEventListener("click", e => {
+  const b = e.target.closest("[data-f]"); if (!b) return;
+  filtroFotos = b.dataset.f; b.parentElement.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); pintarFotos();
+});
+$("#p-lista").addEventListener("click", async e => {
+  const sub = e.target.closest("[data-foto]"), quitar = e.target.closest("[data-quitar-foto]");
+  if (sub) { fotoPara = CATALOGO.find(p => p.id === +sub.dataset.foto); $("#p-archivo").value = ""; $("#p-archivo").click(); }
+  if (quitar) {
+    const p = CATALOGO.find(x => x.id === +quitar.dataset.quitarFoto);
+    if (!confirm(`¿Quitar la foto de ${p.nombre}?`)) return;
+    const { error } = await sb.from("productos").update({ foto_url: null }).eq("id", p.id);
+    if (error) return alert("No se pudo quitar: " + error.message);
+    borrarArchivo(p.foto_url); p.foto_url = null; pintarFotos(); avisar("Foto quitada");
+  }
+});
+const rutaEnBucket = url => (url || "").split("/storage/v1/object/public/productos/")[1] || null;
+function borrarArchivo(url) { const r = rutaEnBucket(url); if (r) sb.storage.from("productos").remove([r]); }
+
+// achica la foto en el celu antes de subirla (máx. 900 px, JPG): sube rápido y pesa poco
+async function achicar(archivo) {
+  const url = URL.createObjectURL(archivo);
+  try {
+    const img = await new Promise((ok, mal) => { const i = new Image(); i.onload = () => ok(i); i.onerror = mal; i.src = url; });
+    const k = Math.min(1, 900 / Math.max(img.naturalWidth, img.naturalHeight));
+    const c = document.createElement("canvas"); c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+    const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, c.width, c.height); ctx.drawImage(img, 0, 0, c.width, c.height);
+    return await new Promise(ok => c.toBlob(ok, "image/jpeg", 0.85));
+  } finally { URL.revokeObjectURL(url); }
+}
+$("#p-archivo").addEventListener("change", async e => {
+  const archivo = e.target.files[0], p = fotoPara; if (!archivo || !p) return;
+  avisar("Subiendo foto…");
+  let blob;
+  try { blob = await achicar(archivo); } catch { return alert("No pude leer esa imagen. Probá con otra (JPG o PNG)."); }
+  const ruta = `${p.slug || "producto-" + p.id}-${Date.now()}.jpg`;
+  const { error: e1 } = await sb.storage.from("productos").upload(ruta, blob, { contentType: "image/jpeg", cacheControl: "31536000" });
+  if (e1) return alert("No se pudo subir la foto: " + e1.message);
+  const url = sb.storage.from("productos").getPublicUrl(ruta).data.publicUrl;
+  const { error: e2 } = await sb.from("productos").update({ foto_url: url }).eq("id", p.id);
+  if (e2) { sb.storage.from("productos").remove([ruta]); return alert("No se pudo guardar la foto: " + e2.message); }
+  const vieja = p.foto_url; p.foto_url = url; if (vieja) borrarArchivo(vieja);
+  pintarFotos(); avisar("Foto guardada · en la página se ve en menos de una hora");
 });
 
 /* ---------- Ventas del día ---------- */

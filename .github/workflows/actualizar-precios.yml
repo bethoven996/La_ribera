@@ -36,13 +36,24 @@ jobs:
           mkdir -p secrets
           printf '%s' "$GOOGLE_SA" > secrets/la-ribera-sync.json
 
-      - name: Leer el Drive y armar el catálogo
+      - name: Leer el Drive (precios)
         env:
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_SERVICE_ACCOUNT_FILE: secrets/la-ribera-sync.json
-        run: |
-          python scripts/sync_drive.py
-          python scripts/armar_catalogo.py
+        run: python scripts/sync_drive.py
+
+      # Fotos de la carpeta del Drive con el nombre del producto. Si falla, se publica igual.
+      - name: Traer fotos nuevas del Drive
+        continue-on-error: true
+        env:
+          GOOGLE_FOTOS_FOLDER_ID: ${{ secrets.GOOGLE_FOTOS_FOLDER_ID }}
+          GOOGLE_SERVICE_ACCOUNT_FILE: secrets/la-ribera-sync.json
+        run: python scripts/fotos_drive.py
+
+      - name: Armar el catálogo de la web
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}   # para traer las fotos subidas desde el panel
+        run: python scripts/armar_catalogo.py
 
       # Copia precios y costos a Supabase para que los pedidos y las estadísticas del panel
       # usen los mismos precios que la web. Si falla, la web se actualiza igual.
@@ -56,14 +67,14 @@ jobs:
 
       - name: Publicar solo si cambió algo
         run: |
-          if git diff --quiet -- web/data; then
-            echo "Sin cambios en la planilla. No se publica nada."
+          if [ -z "$(git status --porcelain -- web/data web/img)" ]; then
+            echo "Sin cambios en precios ni fotos. No se publica nada."
             exit 0
           fi
           git config user.name "la-ribera-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add web/data
-          git commit -m "Precios actualizados desde el Drive"
+          git add web/data web/img
+          git commit -m "Precios y fotos actualizados desde el Drive"
           git push
 
       - name: Borrar la clave
