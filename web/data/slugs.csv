@@ -303,12 +303,17 @@ mani-repelado-con-sal,Maní repelado con sal,Frutos secos,si
 mani-repelado-sin-sal,Maní repelado sin sal,Frutos secos,si
 mix-cervecero-salado,Mix Cervecero - salado,Frutos secos,si
 mix-europeo,Mix Europeo,Frutos secos,si
+mix-europeo-proveedor-nuevo,Mix europeo proveedor nuevo,Frutos secos,
 mix-frutos-secos-s-pasas-con-banana,Mix frutos secos s/ pasas con banana,Frutos secos,si
 mix-frutos-secos-s-pasas-con-mani,Mix frutos secos s/pasas con mani,Frutos secos,si
 mix-frutos-secos-s-pasas-s-mani,Mix frutos secos s/pasas s/maní,Frutos secos,si
 mix-patagonico,Mix patagónico,Frutos secos,si
+mix-salado-proveedor-nuevo,Mix salado proveedor nuevo,Frutos secos,
+mix-sin-pasas-proveedor-nuevo,Mix sin pasas proveedor nuevo,Frutos secos,
 mix-tropical,Mix tropical,Frutos secos,si
+mix-tropical-proveedor-nuevo,Mix tropical proveedor nuevo,Frutos secos,
 nueces-extra-light,Nueces extra light,Frutos secos,si
+nueces-mariposa-proveedor-nuevo,Nueces mariposa proveedor nuevo,Frutos secos,
 nueces-pecan,Nueces pecan,Frutos secos,si
 pasas-de-uva-sultarina-negra,Pasas de uva sultarina negra,Frutos secos,si
 pistacho-tostado-salado,Pistacho tostado salado,Frutos secos,si
@@ -406,8 +411,8 @@ pan-de-molde-calabaza,Pan de molde Calabaza,Panificados,si
 pan-de-molde-centeno,Pan de molde Centeno,Panificados,si
 pan-de-molde-sarraceno,Pan de molde Sarraceno,Panificados,si
 pan-de-molde-semillados,Pan de molde Semillados,Panificados,si
+pan-destacados,Pan destacados,Panificados,
 pan-la-ribera,Pan la ribera,Panificados,
-panes-destacados-sintacc,Panes destacados sintacc,Panificados,si
 prepizza,Prepizza,Panificados,si
 amaranto-cumana,Amaranto - Cumaná,Semillas,si
 chia-premium,Chía premium,Semillas,si
