@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from import_excel import HOJAS, EstructuraCambiada, guardar, procesar  # noqa: E402
+from import_excel import HOJAS, HOJAS_OPCIONALES, EstructuraCambiada, guardar, procesar  # noqa: E402
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets.readonly"]
 
@@ -34,7 +34,8 @@ def hojas_desde_google(sheet_id: str, credenciales: str) -> dict[str, list[tuple
     titulos = [s["properties"]["title"] for s in api.get(spreadsheetId=sheet_id).execute()["sheets"]]
     # Solo las 3 hojas que usamos, en una sola llamada
     from import_excel import norm
-    pedidas = [t for t in titulos if any(norm(t).endswith(norm(h)) for h in HOJAS.values())]
+    pedidas = [t for t in titulos if any(norm(t).endswith(norm(h)) for h in HOJAS.values())
+               or any(norm(t).strip() == norm(h) for h in HOJAS_OPCIONALES)]
     res = api.values().batchGet(
         spreadsheetId=sheet_id,
         ranges=[f"'{t}'" for t in pedidas],
@@ -71,7 +72,9 @@ def main():
         from dataclasses import asdict
         from cargar_supabase import cargar, imprimir
         dsn = os.environ.get("DATABASE_URL") or sys.exit("Falta DATABASE_URL en el .env")
-        res = cargar([asdict(p) for p in productos.values()], [list(r) for r in revisar], dsn, a.dry_run)
+        from import_excel import MOVIMIENTOS_STOCK
+        res = cargar([asdict(p) for p in productos.values()], [list(r) for r in revisar], dsn, a.dry_run,
+                     stock=MOVIMIENTOS_STOCK)
         imprimir(res, a.dry_run)
 
 

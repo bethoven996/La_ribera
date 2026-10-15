@@ -106,6 +106,7 @@ class Producto:
     proveedor: str | None = None
     activo: bool = True
     clave: str = ""                   # identifica al producto entre syncs
+    precio_kg: float | None = None    # hoja PRECIO X KG: para vender por peso en el local
     presentaciones: list[Presentacion] = field(default_factory=list)
 
 
@@ -171,6 +172,7 @@ def leer_precio_kg(filas, productos, revisar):
                          cat or "Sin categoría", costo_base)
             productos[k] = p
         existente = next((x for x in p.presentaciones if x.gramos == 1000), None)
+        p.precio_kg = precio
         if existente and existente.precio:
             continue
         if existente:   # la de PRECIOS no tenía precio: la reemplaza la de PRECIO X KG
@@ -201,6 +203,8 @@ def validar(pres, hoja, fila, nombre, revisar):
 
 
 HOJAS = {"precios": "PRECIOS", "kg": "PRECIO X KG", "proveedores": "Hoja 1"}
+HOJAS_OPCIONALES = ["STOCK"]      # si no está, no pasa nada
+MOVIMIENTOS_STOCK: list[dict] = []   # lo llena procesar(); lo guarda guardar()
 # Encabezados mínimos que tiene que tener cada hoja (columna -> texto esperado)
 ENCABEZADOS = {
     "precios": {1: "producto", 2: "costo x kg", 3: "fraccionado", 7: "costo total", 10: "precio redondeado"},
@@ -264,6 +268,10 @@ def procesar(hojas: dict[str, list[tuple]]):
             p.activo = False
     for k, p in productos.items():
         p.clave = k
+
+    # Hoja STOCK (opcional): conteos, ingresos y ajustes que cargan en el Excel
+    from stock_excel import leer_stock
+    MOVIMIENTOS_STOCK[:] = leer_stock(hojas, productos, revisar)
     return productos, revisar
 
 
@@ -281,6 +289,7 @@ def guardar(productos, revisar, out):
         json.dumps([{"slug": slug(c), "nombre": c} for c in cats], ensure_ascii=False, indent=2), "utf-8")
     (out / "productos.json").write_text(
         json.dumps([asdict(p) for p in productos.values()], ensure_ascii=False, indent=2), "utf-8")
+    (out / "stock.json").write_text(json.dumps(MOVIMIENTOS_STOCK, ensure_ascii=False, indent=1), "utf-8")
     with open(out / "revisar.csv", "w", newline="", encoding="utf-8-sig") as f:
         w = csv.writer(f)
         w.writerow(["hoja", "fila", "producto", "problema"])
@@ -289,7 +298,7 @@ def guardar(productos, revisar, out):
     activos = sum(p.activo for p in productos.values())
     n_pres = sum(len(p.presentaciones) for p in productos.values())
     print(f"Productos: {len(productos)} ({activos} activos) | Presentaciones: {n_pres} | "
-          f"Categorías: {len(cats)} | Para revisar: {len(revisar)}")
+          f"Categorías: {len(cats)} | Movimientos de stock: {len(MOVIMIENTOS_STOCK)} | Para revisar: {len(revisar)}")
 
 
 def main():

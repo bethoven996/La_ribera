@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel · La Ribera</title>
+<link rel="icon" href="../img/logo-mascara.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&display=swap">
+<link rel="stylesheet" href="admin.css?v=4">
+</head>
+<body>
+
+<!-- ---------- Ingreso ---------- -->
+<main id="vista-login" class="login" hidden>
+  <form class="login-caja" id="form-login" novalidate>
+    <div class="logo grande" role="img" aria-label="La Ribera"></div>
+    <h1>Panel del negocio</h1>
+    <div class="campo"><label for="l-email">Email</label><input id="l-email" type="email" autocomplete="username" required></div>
+    <div class="campo"><label for="l-clave">Contraseña</label><input id="l-clave" type="password" autocomplete="current-password" required></div>
+    <p class="error" id="l-error" role="alert" hidden></p>
+    <button class="btn" type="submit" id="l-boton">Entrar</button>
+    <a class="volver" href="../">← Volver a la tienda</a>
+  </form>
+</main>
+
+<!-- ---------- Panel ---------- -->
+<div id="vista-panel" hidden>
+  <header class="cab">
+    <div class="envoltura cab-fila">
+      <div class="logo" role="img" aria-label="La Ribera"></div>
+      <nav class="pestanias" role="tablist" aria-label="Secciones">
+        <button role="tab" type="button" data-tab="vender" aria-selected="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Vender</button>
+        <button role="tab" type="button" data-tab="ventas" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v18l-2.5-1.5L12 21l-2.5-1.5L7 21zM10 8h4M10 12h4"/></svg>Ventas</button>
+        <button role="tab" type="button" data-tab="pedidos" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16l-1.5 9h-13zM9 19.5h.01M16 19.5h.01"/></svg>Web <span class="burbuja num" id="n-pendientes" hidden></span></button>
+        <button role="tab" type="button" data-tab="stock" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8l8-4 8 4v8l-8 4-8-4zM4 8l8 4 8-4M12 12v8"/></svg>Stock <span class="burbuja num" id="n-stock" hidden></span></button>
+        <button role="tab" type="button" data-tab="resumen" aria-selected="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V5M19 20v-6"/></svg>Dashboard</button>
+      </nav>
+      <button class="salir" type="button" id="salir">Salir</button>
+    </div>
+  </header>
+
+  <main class="envoltura">
+    <!-- Vender -->
+    <section id="tab-vender" class="tab">
+      <div class="buscar-prod">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="v-buscar" type="search" placeholder="Buscar producto…" autocomplete="off" aria-label="Buscar producto">
+      </div>
+      <ul id="v-resultados" class="resultados" aria-live="polite"></ul>
+      <div id="v-editor" class="editor tarjeta" hidden></div>
+
+      <section class="tarjeta ticket" aria-labelledby="t-ticket">
+        <h2 id="t-ticket">Venta actual</h2>
+        <ul id="v-items" class="items"></ul>
+        <div class="ticket-total"><span>Total</span><strong class="num" id="v-total">$0</strong></div>
+        <fieldset class="pagos"><legend>Forma de pago</legend><div id="v-pagos" class="periodos"></div></fieldset>
+        <details class="otra-fecha"><summary>Cambiar fecha u hora</summary>
+          <input type="datetime-local" id="v-fecha" aria-label="Fecha y hora de la venta">
+          <p class="nota">Dejalo vacío para usar la hora actual.</p>
+        </details>
+        <p class="error" id="v-error" role="alert" hidden></p>
+        <button class="btn btn-ancho" type="button" id="v-guardar" disabled>Guardar venta</button>
+      </section>
+      <div class="toast" id="toast" role="status" hidden></div>
+    </section>
+
+    <!-- Ventas del día -->
+    <section id="tab-ventas" class="tab" hidden>
+      <div class="barra dia-barra">
+        <button type="button" class="flecha-dia" id="d-ant" aria-label="Día anterior">‹</button>
+        <input type="date" id="d-fecha" aria-label="Día">
+        <button type="button" class="flecha-dia" id="d-sig" aria-label="Día siguiente">›</button>
+      </div>
+      <div class="tiles tres">
+        <div class="tile"><span>Vendido</span><strong class="num" id="d-total">–</strong></div>
+        <div class="tile"><span>Ventas</span><strong class="num" id="d-cant">–</strong></div>
+        <div class="tile"><span>Ganancia</span><strong class="num" id="d-gan">–</strong></div>
+      </div>
+      <div id="d-lista" class="pedidos"></div>
+    </section>
+
+    <!-- Stock -->
+    <section id="tab-stock" class="tab" hidden>
+      <div class="buscar-prod">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="s-buscar" type="search" placeholder="Buscar en el stock…" autocomplete="off" aria-label="Buscar en el stock">
+      </div>
+      <div class="periodos" role="group" aria-label="Mostrar" id="s-filtro">
+        <button type="button" data-f="alerta" aria-pressed="true">Para reponer</button>
+        <button type="button" data-f="todos">Todos</button>
+      </div>
+      <div id="s-lista" class="stock-lista"></div>
+      <details class="tarjeta ayuda">
+        <summary>¿Cómo se carga el stock?</summary>
+        <p>En el Excel del Drive, en la hoja <b>STOCK</b>, una fila por movimiento:</p>
+        <table><thead><tr><th>Fecha</th><th>Producto</th><th>Tipo</th><th>Cantidad</th><th>Unidad</th><th>Nota</th></tr></thead>
+          <tbody><tr><td>14/10/2026</td><td>Almendra sin cascara guara 6</td><td>Conteo</td><td>4,5</td><td>kg</td><td></td></tr>
+          <tr><td>16/10/2026</td><td>Almendra sin cascara guara 6</td><td>Ingreso</td><td>10</td><td>kg</td><td>Proveedor</td></tr>
+          <tr><td>18/10/2026</td><td>Almendra sin cascara guara 6</td><td>Ajuste</td><td>-0,5</td><td>kg</td><td>Se humedeció</td></tr>
+          <tr><td>14/10/2026</td><td>Almendra sin cascara guara 6</td><td>Mínimo</td><td>2</td><td>kg</td><td></td></tr></tbody></table>
+        <ul>
+          <li><b>Conteo:</b> lo que hay en el local ese día, contado antes de abrir. Reemplaza todo lo anterior.</li>
+          <li><b>Ingreso:</b> mercadería que entró. <b>Ajuste:</b> correcciones (negativo si se perdió algo). <b>Mínimo:</b> desde cuánto avisa.</li>
+          <li>Lo suelto en <b>kg</b>, lo envasado en <b>u</b> (unidades). El producto se escribe igual que en la hoja PRECIOS.</li>
+          <li>Las ventas del panel y los pedidos web confirmados se descuentan solos. El Excel se lee cada hora.</li>
+        </ul>
+      </details>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="tab-resumen" class="tab" hidden>
+      <div class="filtros">
+        <div class="periodos" role="group" aria-label="Período" id="f-periodo">
+          <button type="button" data-p="mes" aria-pressed="true">Este mes</button>
+          <button type="button" data-p="mes-ant">Mes pasado</button>
+          <button type="button" data-p="7">7 días</button>
+          <button type="button" data-p="30">30 días</button>
+          <button type="button" data-p="anio">Este año</button>
+          <button type="button" data-p="rango">Elegir fechas</button>
+        </div>
+        <div class="fila-filtros">
+          <div class="rango" id="f-rango" hidden>
+            <input type="date" id="f-desde" aria-label="Desde"><span>a</span><input type="date" id="f-hasta" aria-label="Hasta">
+          </div>
+          <select id="f-categoria" aria-label="Categoría"><option value="">Todas las categorías</option></select>
+        </div>
+        <p class="sync" id="f-texto"></p>
+      </div>
+
+      <div class="aviso-pend" id="aviso-pend" hidden></div>
+
+      <div class="kpis" id="kpis"></div>
+
+      <section class="tarjeta">
+        <div class="tarjeta-cab"><h2>Ventas en el tiempo</h2>
+          <div class="seg" role="group" aria-label="Agrupar por" id="g-agrupar">
+            <button type="button" data-a="dia">Día</button><button type="button" data-a="semana">Semana</button><button type="button" data-a="mes">Mes</button>
+          </div></div>
+        <div class="lienzo"><canvas id="c-tiempo" aria-label="Ventas en el tiempo" role="img"></canvas></div>
+      </section>
+
+      <div class="dos-col">
+        <section class="tarjeta"><h2>Qué días se vende más</h2><p class="nota">Promedio vendido por día de la semana</p>
+          <div class="lienzo bajo"><canvas id="c-semana" aria-label="Ventas promedio por día de la semana" role="img"></canvas></div></section>
+        <section class="tarjeta"><div class="tarjeta-cab"><h2>Lo que más se vende</h2>
+          <div class="seg" role="group" aria-label="Ordenar por" id="g-top"><button type="button" data-t="ventas" aria-pressed="true">Ventas $</button><button type="button" data-t="ganancia">Ganancia</button></div></div>
+          <div id="b-top" class="barras-h"></div></section>
+        <section class="tarjeta"><h2>Por categoría</h2><div id="b-cat" class="barras-h"></div></section>
+        <section class="tarjeta"><h2>Lo que menos se vende</h2><p class="nota" id="sin-ventas"></p><div id="t-menos"></div></section>
+        <section class="tarjeta"><h2>Local y web</h2><div id="b-canal" class="barras-h"></div></section>
+        <section class="tarjeta"><h2>Formas de pago</h2><div id="b-pago" class="barras-h"></div></section>
+      </div>
+
+      <section class="tarjeta" id="gastos">
+        <div class="tarjeta-cab"><h2>Gastos del negocio</h2><strong class="num" id="g-total"></strong></div>
+        <p class="nota">Alquiler, luz, impuestos, sueldos… Se restan para calcular la ganancia neta. No cargues compras de mercadería: ese costo ya se descuenta en cada venta.</p>
+        <form id="form-gasto" class="form-gasto" novalidate>
+          <input type="date" id="gs-fecha" aria-label="Fecha" required>
+          <select id="gs-cat" aria-label="Tipo de gasto">
+            <option>Alquiler</option><option>Luz</option><option>Gas</option><option>Agua</option><option>Internet y teléfono</option>
+            <option>Impuestos</option><option>Sueldos</option><option>Mantenimiento</option><option>Otros</option>
+          </select>
+          <input type="text" id="gs-desc" maxlength="200" placeholder="Detalle (opcional)" aria-label="Detalle">
+          <input type="number" id="gs-monto" inputmode="numeric" min="1" placeholder="Monto $" aria-label="Monto" required>
+          <button class="btn" type="submit">Agregar gasto</button>
+        </form>
+        <p class="error" id="gs-error" role="alert" hidden></p>
+        <div id="g-lista"></div>
+      </section>
+    </section>
+
+    <!-- Pedidos -->
+    <section id="tab-pedidos" class="tab" hidden>
+      <div class="barra">
+        <div class="periodos" role="group" aria-label="Estado" id="filtro-estado">
+          <button type="button" data-e="pendiente" aria-pressed="true">Pendientes</button>
+          <button type="button" data-e="confirmado">Confirmados</button>
+          <button type="button" data-e="entregado">Entregados</button>
+          <button type="button" data-e="cancelado">Cancelados</button>
+          <button type="button" data-e="">Todos</button>
+        </div>
+      </div>
+      <p class="nota">Un pedido nuevo de la web entra como <b>pendiente</b>. Cuando lo arreglan por WhatsApp, márquenlo como <b>confirmado</b>: recién ahí suma a las ventas.</p>
+      <div id="lista-pedidos" class="pedidos"></div>
+    </section>
+  </main>
+</div>
+
+<div class="cargando" id="cargando">Cargando…</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../js/config.js?v=1"></script>
+<script src="admin.js?v=4"></script>
+</body>
+</html>

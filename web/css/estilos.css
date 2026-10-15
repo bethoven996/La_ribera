@@ -1403,3 +1403,36 @@ fieldset.campo {
   line-height: 1.5;
   opacity: 0.95;
 }
+.horarios {
+  margin: 6px 0 18px;
+  padding: 12px 16px;
+  background: var(--papel);
+  border-radius: 12px;
+  display: grid;
+  gap: 4px;
+  max-width: 340px;
+}
+.horarios dt {
+  font-weight: 600;
+  color: var(--tinta);
+  margin-bottom: 2px;
+}
+.horarios dd {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--tinta-suave);
+  font-size: 15px;
+}
+.horarios dd strong {
+  color: var(--tinta);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.pie .pie-horarios {
+  margin: 0 0 0 28px;
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.95;
+}

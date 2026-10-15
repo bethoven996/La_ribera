@@ -343,7 +343,54 @@ function pintarPanel() {
 }
 
 const iconoWa = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>`;
-
+/* ---------- Registrar el pedido en el panel del dueño ---------- */
+// Si falla (sin internet, base caída), el pedido igual sale por WhatsApp, solo que sin número.
+let pedidoRegistrado = null; // { firma, numero }
+async function registrarPedido() {
+  const cfg = window.RIBERA || {};
+  if (
+    !cfg.SUPABASE_URL ||
+    !cfg.SUPABASE_ANON_KEY ||
+    cfg.SUPABASE_ANON_KEY.startsWith("PEGAR")
+  )
+    return null;
+  const lista = items();
+  const firma = JSON.stringify([lista.map((i) => [i.k, i.cant]), datos]);
+  if (pedidoRegistrado?.firma === firma) return pedidoRegistrado.numero; // mismo pedido: no duplicar
+  try {
+    const r = await fetch(`${cfg.SUPABASE_URL}/rest/v1/rpc/crear_pedido_web`, {
+      method: "POST",
+      headers: {
+        apikey: cfg.SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${cfg.SUPABASE_ANON_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        p_nombre: datos.nombre,
+        p_apellido: datos.apellido,
+        p_tel: null,
+        p_entrega: datos.entrega,
+        p_direccion: datos.entrega === "envio" ? datos.direccion : null,
+        p_pago: datos.pago,
+        p_notas: datos.notas || null,
+        p_items: lista.map((i) => ({
+          slug: i.p.s,
+          etiqueta: i.v.e,
+          cantidad: i.cant,
+        })),
+      }),
+      signal: AbortSignal.timeout ? AbortSignal.timeout(6000) : undefined,
+    });
+    if (!r.ok) throw new Error(await r.text());
+    const [fila] = await r.json();
+    pedidoRegistrado = { firma, numero: fila?.numero ?? null };
+    return pedidoRegistrado.numero;
+  } catch (e) {
+    console.warn("No se pudo registrar el pedido en el panel:", e);
+    pedidoRegistrado = null;
+    return null;
+  }
+}
 function armarMensaje() {
   const lineas = items().map(
     (i) =>

@@ -4,11 +4,11 @@ name: Actualizar precios desde el Drive
 
 on:
   schedule:
-    - cron: "7 * * * *" # cada hora, en el minuto 7 (hora UTC)
-  workflow_dispatch: # botón "Run workflow" para actualizar ya
+    - cron: "7 * * * *"      # cada hora, en el minuto 7 (hora UTC)
+  workflow_dispatch:          # botón "Run workflow" para actualizar ya
 
 permissions:
-  contents: write # para poder commitear el catálogo
+  contents: write             # para poder commitear el catálogo
 
 concurrency:
   group: actualizar-precios
@@ -43,6 +43,16 @@ jobs:
         run: |
           python scripts/sync_drive.py
           python scripts/armar_catalogo.py
+
+      # Copia precios y costos a Supabase para que los pedidos y las estadísticas del panel
+      # usen los mismos precios que la web. Si falla, la web se actualiza igual.
+      - name: Actualizar la base del panel
+        continue-on-error: true
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then echo "Sin DATABASE_URL: se saltea la base."; exit 0; fi
+          python scripts/cargar_supabase.py
 
       - name: Publicar solo si cambió algo
         run: |

@@ -40,7 +40,8 @@ def dec(v):
     return None if v is None else Decimal(str(round(v, 2)))
 
 
-def cargar(productos: list[dict], revisar: list[list], dsn: str, dry_run: bool = False) -> dict:
+def cargar(productos: list[dict], revisar: list[list], dsn: str, dry_run: bool = False,
+           stock: list[dict] | None = None) -> dict:
     res = {"nuevos": [], "precios_cambiados": [], "desactivados": [], "reactivados": []}
 
     with psycopg.connect(dsn) as conn, conn.cursor() as cur:
@@ -52,6 +53,10 @@ def cargar(productos: list[dict], revisar: list[list], dsn: str, dry_run: bool =
                         (slug(nombre), nombre, orden))
         cur.execute("select nombre, id from public.categorias")
         cat_id = dict(cur.fetchall())
+
+        cur.execute("""select exists (select 1 from information_schema.columns
+                        where table_schema = 'public' and table_name = 'productos' and column_name = 'precio_kg')""")
+        tiene_precio_kg = cur.fetchone()[0]
 
         cur.execute("select clave, id, activo, slug from public.productos")
         existentes = {c: (i, a, s) for c, i, a, s in cur.fetchall()}
@@ -81,6 +86,11 @@ def cargar(productos: list[dict], revisar: list[list], dsn: str, dry_run: bool =
                     res["reactivados"].append(p["nombre"])
                 elif estaba_activo and not p["activo"]:
                     res["desactivados"].append(p["nombre"])
+
+            # precio por kilo (vender por peso en el local). Si la base todavía no tiene
+            # la columna (falta correr 0005), se saltea sin romper la sync.
+            if tiene_precio_kg:
+                cur.execute("update public.productos set precio_kg = %s where id = %s", (dec(p.get("precio_kg")), pid))
 
             cur.execute("""insert into public.productos_privado (producto_id, proveedor, costo_base, nombre_original)
                            values (%s, %s, %s, %s)
@@ -129,6 +139,19 @@ def cargar(productos: list[dict], revisar: list[list], dsn: str, dry_run: bool =
                         where en_planilla and not (clave = any(%s)) returning nombre""", (claves,))
         res["desactivados"] += [r[0] for r in cur.fetchall()]
 
+        # --- stock: la hoja STOCK del Excel se vuelve a copiar entera en cada sync ---
+        cur.execute("select to_regclass('public.stock_movimientos') is not null")
+        if stock is not None and cur.fetchone()[0]:
+            cur.execute("select clave, id from public.productos")
+            ids = dict(cur.fetchall())
+            cur.execute("delete from public.stock_movimientos where origen = 'excel'")
+            for m in stock:
+                if m["clave"] in ids:
+                    cur.execute("""insert into public.stock_movimientos (producto_id, fecha, tipo, cantidad, unidad, nota, fila, origen)
+                                   values (%s, %s, %s, %s, %s, %s, %s, 'excel')""",
+                                (ids[m["clave"]], m["fecha"], m["tipo"], m["cantidad"], m["unidad"], m["nota"], m["fila"]))
+            res["stock"] = [f'{len(stock)} movimientos']
+
         resumen = {k: len(v) for k, v in res.items()} | {"total_planilla": len(productos)}
         cur.execute("insert into public.sync_log (ok, resumen, revisar) values (true, %s, %s)",
                     (json.dumps(resumen | {"detalle": res}, ensure_ascii=False),
@@ -169,7 +192,9 @@ def main():
     with open(seed / "revisar.csv", encoding="utf-8-sig") as f:
         revisar = list(csv.reader(f))[1:]
 
-    imprimir(cargar(productos, revisar, dsn, a.dry_run), a.dry_run)
+    f_stock = seed / "stock.json"
+    stock = json.loads(f_stock.read_text("utf-8")) if f_stock.exists() else None
+    imprimir(cargar(productos, revisar, dsn, a.dry_run, stock=stock), a.dry_run)
 
 
 if __name__ == "__main__":
