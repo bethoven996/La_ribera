@@ -1436,3 +1436,29 @@ fieldset.campo {
   line-height: 1.5;
   opacity: 0.95;
 }
+/* ---------- Ver más productos ---------- */
+.ver-mas-caja {
+  grid-column: 1 / -1;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding-top: 8px;
+}
+.ver-mas {
+  border: 1.5px solid var(--boton);
+  background: var(--superficie);
+  color: var(--tinta);
+  border-radius: 999px;
+  padding: 11px 26px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+.ver-mas:hover {
+  background: var(--boton);
+  color: var(--texto-boton);
+}
+.ver-mas-caja small {
+  color: var(--tinta-suave);
+  font-size: 13px;
+}

@@ -143,18 +143,37 @@ function filtrados() {
   );
 }
 
-function pintarGrilla() {
+/* ---------- Ver más: muestra de a 24 productos ---------- */
+const POR_TANDA = 24;
+let mostrando = POR_TANDA;
+
+function pintarGrilla(seguir = false) {
   const lista = filtrados();
+  if (!seguir) mostrando = POR_TANDA; // nueva búsqueda o categoría: arranca de nuevo
   $("#titulo-lista").textContent = busqueda
     ? `Resultados para “${$("#buscar").value.trim()}”`
     : categoria || "Todos los productos";
   $("#conteo").textContent =
     lista.length === 1 ? "1 producto" : `${lista.length} productos`;
+  const faltan = lista.length - mostrando;
   $("#grilla").innerHTML = lista.length
-    ? lista.map(tarjeta).join("")
+    ? lista.slice(0, mostrando).map(tarjeta).join("") +
+      (faltan > 0
+        ? `<div class="ver-mas-caja"><button class="ver-mas" type="button" id="ver-mas">Ver más productos</button>
+        <small class="num">Mostrando ${mostrando} de ${lista.length}</small></div>`
+        : "")
     : `<div class="vacio"><strong>No encontramos ese producto</strong>Probá con otra palabra o mirá todas las categorías.</div>`;
 }
-
+$("#grilla").addEventListener("click", (e) => {
+  if (!e.target.closest("#ver-mas")) return;
+  const antes = mostrando;
+  mostrando += POR_TANDA;
+  pintarGrilla(true);
+  document
+    .querySelectorAll("#grilla .producto")
+    [antes]?.querySelector("button")
+    ?.focus({ preventScroll: true });
+});
 function repintarTarjeta(id) {
   const el = document.querySelector(`.producto[data-id="${id}"]`);
   if (el) el.outerHTML = tarjeta(porId.get(id));
