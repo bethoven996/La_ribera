@@ -51,7 +51,7 @@ poroto-negro,Poroto negro,Cereales y legumbres,si
 soja-texturizada,Soja texturizada,Cereales y legumbres,si
 tutuca-dulce,Tutuca dulce,Cereales y legumbres,si
 tutuca-light,Tutuca light,Cereales y legumbres,si
-bolsita-chipa-500gr-chipacheese,Bolsita chipa 500gr - chipacheese,Congelados,
+bolsita-chipa-500gr-chipacheese,Bolsita chipa 500gr - chipacheese,Congelados,si
 empanadas-choclo,Empanadas choclo,Congelados,si
 empanadas-verdura,Empanadas verdura,Congelados,si
 hamburguesa-big-clasic-x2u-felices-las-vacas,Hamburguesa big clasic x2u - Felices las vacas,Congelados,si
@@ -83,11 +83,10 @@ ajo-granulado,Ajo granulado,Especias y condimentos,si
 aji-molido,AjÍ molido,Especias y condimentos,si
 boldo-en-hojas-peoncito,Boldo en hojas peoncito,Especias y condimentos,si
 burrito-hojas,Burrito hojas,Especias y condimentos,si
-cacao-el-quilla-x-900gr,Cacao el quilla x 900gr,Especias y condimentos,si
 canela-molida-extra-500gr-dussen,Canela molida extra 500gr - Dussen,Especias y condimentos,si
 canela-polvo,Canela polvo,Especias y condimentos,si
 cedron-en-hojas-peoncito,Cedrón en hojas- Peoncito,Especias y condimentos,si
-chimichurry-deshidratado,Chimichurry deshidratado,Especias y condimentos,
+chimichurry-deshidratado,Chimichurry deshidratado,Especias y condimentos,si
 coco-rallado-high-fat,Coco rallado high fat,Especias y condimentos,si
 comino,Comino,Especias y condimentos,si
 condimento-arroz,Condimento arroz,Especias y condimentos,si
@@ -154,7 +153,7 @@ aceto-balsamico-casalta-clasico,Aceto Balsamico - Casalta clásico,Granolas y ba
 alfajor-de-maicena-x-60-gr-themba,Alfajor de maicena x 60 gr themba,Granolas y barritas,si
 alfajor-integrales-sin-azucar,Alfajor integrales sin azucar,Granolas y barritas,si
 alfajor-keto-pasta-de-mani-vento,Alfajor keto pasta de mani - vento,Granolas y barritas,si
-alfajores-dieteticos-cereal,Alfajores dieteticos - cereal,Granolas y barritas,
+alfajores-dieteticos-cereal,Alfajores dieteticos - cereal,Granolas y barritas,si
 alfajores-naranja-y-coco-meltraim,Alfajores naranja y coco - Meltraim,Granolas y barritas,si
 alfajores-surtidos-maixanas-x22u,Alfajores surtidos Maixanas x22u,Granolas y barritas,si
 arbanit-cafe-vegano,Arbanit café vegano,Granolas y barritas,si
@@ -178,6 +177,7 @@ barrita-proteica-arandanos-zannas,Barrita proteica arandanos zannas,Granolas y b
 barrita-proteica-avellanas-integra,Barrita proteica avellanas- integra,Granolas y barritas,si
 barrita-proteica-banana-y-ddl-integra,Barrita proteica banana y ddl- integra,Granolas y barritas,si
 barrita-proteica-cereal-banana-integra,Barrita proteica cereal banana - integra,Granolas y barritas,si
+barrita-proteica-cereal-dulce-de-leche-integra,Barrita proteica cereal dulce de leche - integra,Granolas y barritas,
 barrita-proteica-cereal-mani-y-chocolate-integra,Barrita proteica cereal mani y chocolate - integra,Granolas y barritas,si
 barrita-proteica-cereal-pasta-de-mani-y-arandanos-integra,Barrita proteica cereal pasta de mani y arandanos - integra,Granolas y barritas,si
 barrita-proteica-coco-y-cacao-zannas,Barrita proteica coco y cacao zannas,Granolas y barritas,si
@@ -193,13 +193,13 @@ butter-cookies-chocolate-denale,Butter cookies- chocolate - Denale,Granolas y ba
 caja-alfajor-frutos-del-bosque-x8u-franks,Caja alfajor frutos del bosque x8u - Franks,Granolas y barritas,si
 caja-alfajor-mousse-limon-x8u-franks,Caja alfajor mousse limón x8u - Franks,Granolas y barritas,si
 caja-alfajor-pasta-de-mani-con-choco-x8u-franks,Caja alfajor pasta de maní con choco x8u - Franks,Granolas y barritas,si
-chip-batata-merken-nuestros-sabores,Chip batata merken- Nuestros Sabores,Granolas y barritas,
+chip-batata-merken-nuestros-sabores,Chip batata merken- Nuestros Sabores,Granolas y barritas,si
 cookie-avena-y-nuez-boccone,Cookie avena y nuez - Boccone,Granolas y barritas,si
 cookie-avena-y-pasas-boccone,Cookie avena y pasas Boccone,Granolas y barritas,si
 cookie-avena-chocolate-y-coco-boccone,"Cookie avena, chocolate y coco - Boccone",Granolas y barritas,si
 cookie-avena-chia-limon-boccone,"Cookie avena, chía, limón - Boccone",Granolas y barritas,si
-cookie-cacao-y-mani-boccone,Cookie cacao y mani - Boccone,Granolas y barritas,
-crackitas-integrales-clasicas,Crackitas integrales clasicas,Granolas y barritas,
+cookie-cacao-y-mani-boccone,Cookie cacao y mani - Boccone,Granolas y barritas,si
+crackitas-integrales-clasicas,Crackitas integrales clasicas,Granolas y barritas,si
 crackitas-integrales-semillas,Crackitas integrales semillas,Granolas y barritas,
 crakitas-integrales-cebolla-queso,Crakitas integrales cebolla-queso,Granolas y barritas,
 crakitas-integrales-semilla-mostaza-y-romero,Crakitas integrales semilla mostaza y romero,Granolas y barritas,
@@ -230,20 +230,29 @@ galletas-de-arroz-risky-dulces-100gr,Galletas de arroz risky dulces 100gr,Granol
 galletias-de-naranja-cereal,Galletias de naranja - cereal,Granolas y barritas,si
 galletita-azul-integral-con-chips-cachafaz,Galletita azul integral con chips - cachafaz,Granolas y barritas,si
 galletita-organica-avena-y-miel-cachafaz,Galletita organica avena y miel - cachafaz,Granolas y barritas,si
+galletita-salada-capresse-x-100gr-bastoni,Galletita salada Capresse x 100gr- Bastoni,Granolas y barritas,si
+galletita-salada-parmesano-y-aceituna-100gr-bastoni,Galletita salada Parmesano y aceituna 100gr- Bastoni,Granolas y barritas,si
+galletita-salada-parmesano-y-amapola-x-100gr-bastoni,Galletita salada Parmesano y amapola x 100gr- Bastoni,Granolas y barritas,si
+galletita-salada-aceituna-x-100gr-bastoni,Galletita salada aceituna x 100gr- Bastoni,Granolas y barritas,si
 galletita-stevia-chocolate-trini,Galletita stevia chocolate- trini,Granolas y barritas,si
 galletitas-chip-de-choco-x-200gr-doninas,Galletitas Chip de choco x 200gr - Doninas,Granolas y barritas,si
 galletitas-chip-de-coco-y-ddl-x-200gr-doninas,Galletitas Chip de coco y ddl x 200gr - Doninas,Granolas y barritas,si
 galletitas-avena-y-chips-x180gr-sanat,Galletitas avena y chips x180gr - Sanat,Granolas y barritas,si
 galletitas-avena-y-frutos-secos-limbus,Galletitas avena y frutos secos - limbus,Granolas y barritas,
 galletitas-avena-y-pasas-sin-azucar-cereal,Galletitas avena y pasas sin azucar - cereal,Granolas y barritas,si
+galletitas-chia-y-arandanos-200gr-integra,Galletitas chia y arandanos 200gr - integra,Granolas y barritas,
 galletitas-crakers-sin-sal-canvas,Galletitas crakers sin sal - Canvas,Granolas y barritas,si
 galletitas-de-limon-cereal,Galletitas de limon- cereal,Granolas y barritas,si
 galletitas-frutos-del-bosque-x200gr-doninas,Galletitas frutos del bosque x200gr - Doninas,Granolas y barritas,si
 galletitas-integrales-coco-cereal,Galletitas integrales coco- cereal,Granolas y barritas,si
 galletitas-integrales-limon-cereal,Galletitas integrales limon- cereal,Granolas y barritas,si
 galletitas-integrales-vainilla-cereal,Galletitas integrales vainilla- cereal,Granolas y barritas,si
+galletitas-limon-y-amapolas-x-200gr-integra,Galletitas limon y amapolas x 200gr - integra,Granolas y barritas,
+galletitas-limon-crunch-x-100gr-flor-de-snack,Galletitas limón crunch x 100gr flor de snack,Granolas y barritas,
+galletitas-mani-y-almendras-200-gr-integra,Galletitas mani y almendras 200 gr - integra,Granolas y barritas,
 galletitas-marbe-coco-sin-azucar,Galletitas marbe coco sin azucar,Granolas y barritas,si
 galletitas-marbe-frutos-rojos-sin-azucar,Galletitas marbe frutos rojos sin azucar,Granolas y barritas,si
+galletitas-pocket-chia-y-arandanos-x-72gr-integra,Galletitas pocket chia y arandanos x 72gr - integra,Granolas y barritas,
 galletitas-saladas-doninas,Galletitas saladas- doninas,Granolas y barritas,
 galletitas-sin-azucar-limon-x150gr-doninas,Galletitas sin azucar limon x150gr Doninas,Granolas y barritas,si
 galletitas-sin-azucar-naranja-x150-gr-doninas,Galletitas sin azucar naranja x150 gr - Doninas,Granolas y barritas,si
@@ -393,6 +402,7 @@ avena-mediana,Avena mediana,Semillas,si
 budin-banana-y-coco-rosario-veganas,Budin banana y coco - rosario veganas,Semillas,si
 budin-limon-y-chia-rosario-veganas,Budin limón y chia - rosario veganas,Semillas,si
 budin-zanahoria-y-naranja-rosario-veganas,Budin zanahoria y naranja - rosario veganas,Semillas,si
+cacao-el-quilla-x-900gr,Cacao el quilla x 900gr,Semillas,si
 chia-premium,Chía premium,Semillas,si
 cous-cous,Cous- Cous,Semillas,si
 fecula-mandioca-delicel-450gr,Fecula mandioca delicel 450gr,Semillas,si
