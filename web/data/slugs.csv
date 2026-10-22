@@ -11,6 +11,7 @@ arroz-doble-carolina,Arroz doble carolina,Cereales y legumbres,si
 arroz-integral-yamani,Arroz integral Yamaní,Cereales y legumbres,si
 arroz-largo-fino-integral,Arroz largo fino integral,Cereales y legumbres,si
 avena-instantanea,Avena Instantánea,Cereales y legumbres,si
+avena-instantanea-x500gr,Avena Instantánea x500gr,Cereales y legumbres,
 avena-tradicional,Avena tradicional,Cereales y legumbres,si
 bastoncito-salvado-lasford,Bastoncito salvado - Lasford,Cereales y legumbres,si
 bolitas-de-choco-lasford,Bolitas de choco- Lasford,Cereales y legumbres,si
@@ -72,7 +73,7 @@ raviolones-verdura,Raviolones verdura,Congelados,si
 azucar-impalpable-jeraco-x-200gr,Azucar impalpable Jeraco x 200gr,Endulzantes,
 azucar-negra-jerarco,Azucar negra Jerarco,Endulzantes,si
 azucar-rubia,Azúcar Rubia,Endulzantes,si
-azucar-mascabo-x-100gr,Azúcar mascabo x 100gr,Endulzantes,
+azucar-mascabo-x-200gr,Azúcar mascabo x 200gr,Endulzantes,
 edulcorante-sucralosa-x200ml-kony,Edulcorante sucralosa x200ml Kony,Endulzantes,si
 edulcorante-sucralosa-x500ml-kony,Edulcorante sucralosa x500ml Kony,Endulzantes,si
 esencia-de-vainilla,Esencia de vainilla,Endulzantes,si
@@ -394,8 +395,9 @@ yogurt-griego-mermelada-frambuesa-dahi,Yogurt griego mermelada frambuesa - Dahi,
 yogurt-mango-y-maracuya-s-azucar-quimya,Yogurt mango y maracuyá s/azúcar - Quimya,Granolas y barritas,si
 yogurt-pistacho-quimya,Yogurt pistacho - Quimya,Granolas y barritas,si
 yogurt-s-azucar-frutilla-coco-logo,Yogurt s/azúcar frutilla - Coco Logo,Granolas y barritas,si
-almidon-grutal,Almidón grutal,Harinas y derivados,si
+fecula-de-mandioca,Fécula de mandioca,Harinas y derivados,si
 harina-de-avena,Harina de avena,Harinas y derivados,si
+harina-integral,Harina integral,Harinas y derivados,si
 almidon-de-maiz-grutal-x5kg,Almidón de maiz grutal x5kg,Semillas,
 amaranto-cumana,Amaranto - Cumaná,Semillas,si
 avena-cumana-sin-gluten-tradicional-x400-gr,Avena cumaná sin gluten tradicional x400 gr,Semillas,si
@@ -410,7 +412,7 @@ cacao-el-quilla-x-900gr,Cacao el quilla x 900gr,Semillas,si
 chia-premium,Chía premium,Semillas,si
 cous-cous,Cous- Cous,Semillas,si
 fecula-mandioca-delicel-450gr,Fecula mandioca delicel 450gr,Semillas,si
-fecula-de-mandioca,Fécula de mandioca,Semillas,si
+fecula-de-mandioca-x500gr,Fécula de mandioca x500gr,Semillas,
 girasol-s-cascara,Girasol s/ cáscara,Semillas,si
 harina-algarroba,Harina algarroba,Semillas,si
 harina-de-garbanzos,Harina de Garbanzos,Semillas,si
@@ -423,7 +425,7 @@ harina-de-avena-integral-x350gr-dicomere,Harina de avena integral x350gr - Dicom
 harina-de-lenteja,Harina de lenteja,Semillas,si
 harina-de-trigo-sarraceno,Harina de trigo Sarraceno,Semillas,si
 harina-garbanzo,Harina garbanzo,Semillas,si
-harina-integral,Harina integral,Semillas,si
+harina-integral-x500gr,Harina integral x500gr,Semillas,
 harina-proteica-peoncito-x-500g,Harina proteica - Peoncito x 500g,Semillas,si
 levadura-natural-x-200g-nutrilieva,Levadura natural x 200g - Nutrilieva,Semillas,si
 levadura-sabor-queso-x-200g-nutrilieva,Levadura sabor queso x 200g - Nutrilieva,Semillas,si
@@ -444,8 +446,8 @@ premezcla-keto-pancakes-wafles-200-gr-reina-food,Premezcla Keto pancakes/wafles 
 premezcla-panaderia-y-reposteria-natuzen,Premezcla panadería y repostería - Natuzen,Semillas,si
 premezcla-pancakes-avena-chocolate-vento,Premezcla pancakes avena chocolate- vento,Semillas,
 premezcla-pancakes-avena-vainilla-vento,Premezcla pancakes avena vainilla- vento,Semillas,
+premezcla-pancakes-chocolate-proteicos-vento,Premezcla pancakes chocolate proteicos- vento,Semillas,
 premezcla-pancakes-vainilla-proteicos-keto-vento,Premezcla pancakes vainilla proteicos keto- vento,Semillas,
-premezcla-pancakes-vainilla-proteicos-vento,Premezcla pancakes vainilla proteicos- vento,Semillas,
 premezcla-para-chipa-vegano-x200gr-natural-pop,Premezcla para chipa vegano x200gr - Natural pop,Semillas,si
 premezcla-para-pan-integral-x500gr-delicel,Premezcla para pan integral x500gr - Delicel,Semillas,si
 premezcla-universal-x500gr-delicel,Premezcla universal x500gr - Delicel,Semillas,si
