@@ -18,8 +18,8 @@ bolitas-de-choco-lasford,Bolitas de choco- Lasford,Cereales y legumbres,si
 castanas-de-caju-xkg-w4,Castañas de caju xkg W4,Cereales y legumbres,si
 castanas-de-para,Castañas de para,Cereales y legumbres,si
 chip-banana,Chip banana,Cereales y legumbres,si
-copos-maiz-con-azucar-lasford,Copos maíz con azúcar - Lasford,Cereales y legumbres,si
-copos-maiz-sin-azucar-lasfor,Copos maíz sin azúcar - Lasfor,Cereales y legumbres,
+copos-de-maiz-con-azucar,Copos de maíz con azúcar,Cereales y legumbres,
+copos-de-maiz-sin-azucar,Copos de maíz sin azúcar,Cereales y legumbres,
 garbanzos,Garbanzos,Cereales y legumbres,si
 lenteja-nacional,Lenteja Nacional,Cereales y legumbres,si
 lenteja-turca,Lenteja turca,Cereales y legumbres,si
@@ -85,7 +85,7 @@ raviolones-verdura,Raviolones verdura,Congelados,si
 azucar-impalpable-jeraco-x-200gr,Azucar impalpable Jeraco x 200gr,Endulzantes,
 azucar-negra-jerarco,Azucar negra Jerarco,Endulzantes,si
 azucar-rubia,Azúcar Rubia,Endulzantes,si
-azucar-mascabo-x-200gr,Azúcar mascabo x 200gr,Endulzantes,
+azucar-mascabo-x-200gr,Azúcar mascabo x 200gr,Endulzantes,si
 edulcorante-sucralosa-x200ml-kony,Edulcorante sucralosa x200ml Kony,Endulzantes,si
 edulcorante-sucralosa-x500ml-kony,Edulcorante sucralosa x500ml Kony,Endulzantes,si
 esencia-de-vainilla,Esencia de vainilla,Endulzantes,si
@@ -94,16 +94,16 @@ stevia-en-hoja-x-50gr,Stevia en hoja x 50gr,Endulzantes,
 stevia-kony-en-polvo-x-100gr,Stevia kony en polvo x 100gr,Endulzantes,
 ajo-granulado-x100gr,Ajo granulado x100gr,Especias y condimentos,
 aji-molido-x50gr,AjÍ molido x50gr,Especias y condimentos,
-boldo-en-hojas-x50gr,Boldo en hojas x50gr,Especias y condimentos,
-burrito-hojas-x50gr,Burrito hojas x50gr,Especias y condimentos,
-canela-polvo-x100gr,Canela polvo x100gr,Especias y condimentos,
-cedron-en-hojas-x50gr,Cedrón en hojas x50gr,Especias y condimentos,
-chimichurry-deshidratado-x50gr,Chimichurry deshidratado x50gr,Especias y condimentos,
-coco-rallado-x100gr,Coco rallado x100gr,Especias y condimentos,
-comino-x-50gr,Comino x 50gr,Especias y condimentos,
-condimento-para-arroz-x100gr,Condimento para arroz x100gr,Especias y condimentos,
-curry-x-100gr,Curry x 100gr,Especias y condimentos,
-curcuma-x-100gr,Cúrcuma x 100gr,Especias y condimentos,
+boldo-en-hojas-x50gr,Boldo en hojas x50gr,Especias y condimentos,si
+burrito-hojas-x50gr,Burrito hojas x50gr,Especias y condimentos,si
+canela-polvo-x100gr,Canela polvo x100gr,Especias y condimentos,si
+cedron-en-hojas-x50gr,Cedrón en hojas x50gr,Especias y condimentos,si
+chimichurry-deshidratado-x50gr,Chimichurry deshidratado x50gr,Especias y condimentos,si
+coco-rallado-x100gr,Coco rallado x100gr,Especias y condimentos,si
+comino-molido-x-50gr,Comino molido x 50gr,Especias y condimentos,
+condimento-para-arroz-x100gr,Condimento para arroz x100gr,Especias y condimentos,si
+curry-x-100gr,Curry x 100gr,Especias y condimentos,si
+curcuma-x-100gr,Cúrcuma x 100gr,Especias y condimentos,si
 digestiva-burro-cedron-poleo,"DIGESTIVA BURRO, CEDRON, POLEO",Especias y condimentos,si
 hibiscus-x-50gr,Hibiscus x 50gr,Especias y condimentos,
 jengibre-en-polvo-x-100gr,Jengibre en polvo x 100gr,Especias y condimentos,
@@ -167,7 +167,8 @@ alfajor-frutos-del-bosque-franks,Alfajor frutos del bosque - Franks,Granolas y b
 alfajor-keto-pasta-de-mani-vento,Alfajor keto pasta de mani - vento,Granolas y barritas,si
 alfajor-mousse-limon-franks,Alfajor mousse limón - Franks,Granolas y barritas,
 alfajor-pasta-de-mani-con-choco-franks,Alfajor pasta de maní con choco - Franks,Granolas y barritas,si
-alfajores-cerro-azul,Alfajores cerro azul,Granolas y barritas,
+alfajores-cerro-azul-ddl,Alfajores cerro azul ddl,Granolas y barritas,
+alfajores-cerro-azul-frutilla,Alfajores cerro azul frutilla,Granolas y barritas,
 alfajores-dieteticos-cereal,Alfajores dieteticos - cereal,Granolas y barritas,si
 alfajores-naranja-y-coco-meltraim,Alfajores naranja y coco - Meltraim,Granolas y barritas,si
 alfajores-surtidos-pistacho-red-velvet,Alfajores surtidos pistacho/ red velvet,Granolas y barritas,si
@@ -175,16 +176,15 @@ arbanit-cafe-vegano,Arbanit café vegano,Granolas y barritas,si
 arbanit-ddl,Arbanit ddl,Granolas y barritas,si
 barrita-brava-brava-choco,Barrita Brava brava - choco,Granolas y barritas,si
 barrita-brava-brava-mundial,Barrita Brava brava Mundial,Granolas y barritas,si
-barrita-brava-brava-frutilla-y-naranja,Barrita Brava brava frutilla y naranja,Granolas y barritas,
+barrita-brava-brava-frutilla-y-naranja,Barrita Brava brava frutilla y naranja,Granolas y barritas,si
 barrita-brava-brava-proteicas-datiles-y-cacao,Barrita Brava brava proteicas datiles y cacao,Granolas y barritas,
 barrita-cacao-y-avellanas-muecas,Barrita Cacao y avellanas - Muecas,Granolas y barritas,
 barrita-manzana-y-arandanos-muecas,Barrita Manzana y arándanos - Muecas,Granolas y barritas,
-barrita-avellana-y-chocolate-crudda,Barrita avellana y chocolate - crudda,Granolas y barritas,
+barrita-avellana-y-chocolate-crudda,Barrita avellana y chocolate - crudda,Granolas y barritas,si
 barrita-avena-y-banana-integra,Barrita avena y banana - Íntegra,Granolas y barritas,
 barrita-avena-y-datiles-merlin-foods,Barrita avena y datiles - merlin foods,Granolas y barritas,
 barrita-banana-y-ddl-muecas,Barrita banana y ddl - Muecas,Granolas y barritas,
 barrita-brownie-crudda,Barrita brownie - crudda,Granolas y barritas,
-barrita-cacao-y-choco-integra,Barrita cacao y choco - Íntegra,Granolas y barritas,
 barrita-caju-y-arandanos-integra,Barrita caju y arandanos- Íntegra,Granolas y barritas,si
 barrita-coco-y-chocolate-crudda,Barrita coco y chocolate - crudda,Granolas y barritas,
 barrita-granomax-arandanos,Barrita granomax - arandanos,Granolas y barritas,si
@@ -193,8 +193,8 @@ barrita-granomax-chocolate,Barrita granomax - chocolate,Granolas y barritas,si
 barrita-granomax-coco,Barrita granomax - coco,Granolas y barritas,si
 barrita-granomax-manzana,Barrita granomax - manzana,Granolas y barritas,si
 barrita-granomax-pasas-de-uva,Barrita granomax - pasas de uva,Granolas y barritas,si
-barrita-proteica-chocolate-zannas,Barrita proteica Chocolate . Zannas,Granolas y barritas,
-barrita-proteica-almendras-y-sal-marina-zannas,Barrita proteica almendras y sal marina - Zannas,Granolas y barritas,
+barrita-proteica-chocolate-zannas,Barrita proteica Chocolate . Zannas,Granolas y barritas,si
+barrita-proteica-almendras-y-sal-marina-zannas,Barrita proteica almendras y sal marina - Zannas,Granolas y barritas,si
 barrita-proteica-arandanos-zannas,Barrita proteica arandanos zannas,Granolas y barritas,si
 barrita-proteica-avellanas-integra,Barrita proteica avellanas- integra,Granolas y barritas,si
 barrita-proteica-banana-y-ddl-integra,Barrita proteica banana y ddl- integra,Granolas y barritas,si
@@ -206,10 +206,10 @@ barrita-proteica-coco-y-cacao-zannas,Barrita proteica coco y cacao zannas,Granol
 barrita-proteica-coco-y-ddl-integra,Barrita proteica coco y ddl- integra,Granolas y barritas,si
 barrita-proteica-mani-chocolate-10u-integra,Barrita proteica maní chocolate 10u - Íntegra,Granolas y barritas,si
 barrita-proteica-pasta-de-mani-integra,Barrita proteica pasta de mani- integra,Granolas y barritas,si
-barrita-proteica-salted-caramel-zannas,Barrita proteica salted caramel . Zannas,Granolas y barritas,
-barrita-tofee-crudda,Barrita tofee - crudda,Granolas y barritas,
+barrita-proteica-salted-caramel-zannas,Barrita proteica salted caramel . Zannas,Granolas y barritas,si
+barrita-tofee-crudda,Barrita tofee - crudda,Granolas y barritas,si
 batata-y-remolacha-80gr-nuestros-sabores,Batata y remolacha 80gr - Nuestros Sabores,Granolas y barritas,si
-bizcochos-de-hojaldre-naquet,Bizcochos de hojaldre - Naquet,Granolas y barritas,
+bizcochos-de-hojaldre-naquet,Bizcochos de hojaldre - Naquet,Granolas y barritas,si
 bizcochos-delicel,Bizcochos delicel,Granolas y barritas,si
 budin-choco-denale,Budín choco - Denale,Granolas y barritas,si
 budin-vainilla-denale,Budín vainilla - Denale,Granolas y barritas,si
@@ -230,7 +230,7 @@ crakitas-lenguitas-con-semilla,Crakitas lenguitas con semilla,Granolas y barrita
 crakitas-lenguitas-mostaza-y-romero,Crakitas lenguitas mostaza y romero,Granolas y barritas,si
 ddl-con-stevia-sintacc-x220gr-dona-magdalena,DDL con stevia sintacc x220gr - Doña magdalena,Granolas y barritas,si
 ddl-deslactosado-sintacc-x450gr-dona-magdalena,DDL deslactosado sintacc x450gr - Doña magdalena,Granolas y barritas,si
-dulce-de-leche-trini-x200gr,Dulce de leche trini x200gr,Granolas y barritas,
+dulce-de-leche-trini-x200gr,Dulce de leche trini x200gr,Granolas y barritas,si
 fideos-dona-dominga-remolacha,Fideos - Doña dominga- Remolacha,Granolas y barritas,si
 fideos-ollita,Fideos Ollita,Granolas y barritas,si
 fideos-sintacc-3-vegetales-x400gr-doninas,Fideos Sintacc - 3 vegetales x400gr - Doninas,Granolas y barritas,si
@@ -264,11 +264,11 @@ galletitas-limbus-chips-choco-y-avena,Galletitas Limbus chips choco y avena,Gran
 galletitas-limbus-pasas-y-avena,Galletitas Limbus pasas y avena,Granolas y barritas,
 galletitas-limbus-proteicas,Galletitas Limbus proteicas,Granolas y barritas,
 galletitas-avena-y-chips-x180gr-sanat,Galletitas avena y chips x180gr - Sanat,Granolas y barritas,si
-galletitas-avena-y-frutos-secos-limbus,Galletitas avena y frutos secos - limbus,Granolas y barritas,
+galletitas-avena-y-frutos-secos-limbus,Galletitas avena y frutos secos - limbus,Granolas y barritas,si
 galletitas-avena-y-pasas-sin-azucar-cereal,Galletitas avena y pasas sin azucar - cereal,Granolas y barritas,si
-galletitas-avena-y-semillas-sin-azucar-cereal-x190gr,Galletitas avena y semillas sin azucar- cereal x190gr,Granolas y barritas,
+galletitas-avena-y-semillas-sin-azucar-cereal-x190gr,Galletitas avena y semillas sin azucar- cereal x190gr,Granolas y barritas,si
 galletitas-chia-y-arandanos-200gr-integra,Galletitas chia y arandanos 200gr - integra,Granolas y barritas,si
-galletitas-chocolate-y-mani-doninas,Galletitas chocolate y maní- doninas,Granolas y barritas,
+galletitas-chocolate-y-mani-doninas,Galletitas chocolate y maní- doninas,Granolas y barritas,si
 galletitas-crakers-sin-sal-canvas,Galletitas crakers sin sal - Canvas,Granolas y barritas,si
 galletitas-frutos-del-bosque-x200gr-doninas,Galletitas frutos del bosque x200gr - Doninas,Granolas y barritas,si
 galletitas-integrales-coco-cereal,Galletitas integrales coco- cereal,Granolas y barritas,si
@@ -466,7 +466,7 @@ cacao-el-quilla-x-900gr,Cacao el quilla x 900gr,Semillas,si
 chia-premium,Chía premium,Semillas,si
 cous-cous,Cous- Cous,Semillas,si
 fecula-mandioca-delicel-450gr,Fecula mandioca delicel 450gr,Semillas,si
-fecula-de-mandioca-x500gr,Fécula de mandioca x500gr,Semillas,
+fecula-de-mandioca-x500gr,Fécula de mandioca x500gr,Semillas,si
 gelatina-sin-sabor,Gelatina sin sabor,Semillas,
 girasol-s-cascara,Girasol s/ cáscara,Semillas,si
 harina-algarroba,Harina algarroba,Semillas,si
