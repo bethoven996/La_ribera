@@ -46,6 +46,7 @@ nueces-extra-light,Nueces extra light,Cereales y legumbres,si
 nueces-mariposa-proveedor-nuevo,Nueces mariposa proveedor nuevo,Cereales y legumbres,
 nueces-pecan,Nueces pecan,Cereales y legumbres,si
 pasas-de-arandanos,Pasas de arandanos,Cereales y legumbres,
+pasas-de-uva-sultarina-jumbo-negra,Pasas de uva sultarina jumbo negra,Cereales y legumbres,
 pasas-de-uva-sultarina-negra,Pasas de uva sultarina negra,Cereales y legumbres,si
 pistacho-tostado-salado,Pistacho tostado salado,Cereales y legumbres,si
 poroto-alubia,Poroto Alubia,Cereales y legumbres,si
@@ -422,11 +423,16 @@ untable-crema-de-caju-vivet-natural,Untable crema de caju vivet -natural,Granola
 vinagre-de-manzana-pampa-gourmet-250ml,Vinagre de manzana - Pampa gourmet 250ml,Granolas y barritas,si
 vinagre-de-manzana-pampa-gourmet-500ml,Vinagre de manzana - Pampa gourmet 500ml,Granolas y barritas,si
 vinagre-de-vino-organico-pampa-gourmet-250ml,Vinagre de vino organico - Pampa gourmet 250ml,Granolas y barritas,si
+yogur-coco-iogo-natural-con-granola,Yogur Coco Iogo natural con granola,Granolas y barritas,
 yogur-hera,Yogur Hera,Granolas y barritas,
 yogur-nera-x-150gr,Yogur Nera x 150gr,Granolas y barritas,
 yogur-nera-x-500gr,Yogur Nera x 500gr,Granolas y barritas,
 yogur-nera-x300gr,Yogur Nera x300gr,Granolas y barritas,
 yogur-bebible-proteico-frutos-rojos-dahi,Yogur bebible proteico frutos rojos dahi,Granolas y barritas,
+yogur-descremado-frutillas-beaudrioit,Yogur descremado frutillas - Beaudrioit,Granolas y barritas,
+yogur-descremado-frutos-rojos-beaudrioit,Yogur descremado frutos rojos - Beaudrioit,Granolas y barritas,
+yogur-entero-durazno-beaudrioit,Yogur entero durazno - Beaudrioit,Granolas y barritas,
+yogur-entero-mango-beaudrioit,Yogur entero mango - Beaudrioit,Granolas y barritas,
 yogur-firme-natural-descremado-dahi,Yogur firme natural descremado - Dahi,Granolas y barritas,
 yogur-griego-dahi,Yogur griego . dahi,Granolas y barritas,
 yogurt-power-pro-chocolate-quimya,Yogurt Power Pro chocolate - Quimya,Granolas y barritas,si
@@ -450,7 +456,6 @@ yogurt-mango-y-maracuya-s-azucar-quimya,Yogurt mango y maracuyá s/azúcar - Qui
 yogurt-pistacho-quimya,Yogurt pistacho - Quimya,Granolas y barritas,si
 yogurt-s-azucar-frutilla-coco-logo,Yogurt s/azúcar frutilla - Coco Logo,Granolas y barritas,si
 fecula-de-mandioca,Fécula de mandioca,Harinas y derivados,si
-harina-de-avena,Harina de avena,Harinas y derivados,si
 harina-integral,Harina integral,Harinas y derivados,si
 almidon-de-maiz,Almidón de maiz,Semillas,
 amaranto-cumana,Amaranto - Cumaná,Semillas,si
@@ -476,6 +481,7 @@ harina-de-almendras-economica,Harina de almendras económica,Semillas,si
 harina-de-arroz-blanca,Harina de arroz blanca,Semillas,si
 harina-de-arroz-integral,Harina de arroz integral,Semillas,si
 harina-de-arveja,Harina de arveja,Semillas,si
+harina-de-avena,Harina de avena,Semillas,si
 harina-de-avena-integral-x350gr-dicomere,Harina de avena integral x350gr - Dicomere,Semillas,si
 harina-de-lenteja,Harina de lenteja,Semillas,si
 harina-de-trigo-sarraceno,Harina de trigo Sarraceno,Semillas,si
